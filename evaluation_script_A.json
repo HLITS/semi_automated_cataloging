@@ -407,7 +407,7 @@
       "mode": "row-based"
     },
     "baseColumnName": "eval_encl",
-    "expression": "grel:if(isBlank(value), 0 + cells[\"eval_OCLC-050\"].value.toNumber() + cells[\"eval_300a\"].value.toNumber(), cells[\"eval_encl\"].value.toNumber() + cells[\"eval_OCLC-050\"].value.toNumber() + cells[\"eval_300a\"].value.toNumber())",
+    "expression": "grel:if(isBlank(value), 0 + cells[\"eval_OCLC-050\"].value.toNumber() + cells[\"eval_300a\"].value.toNumber(), cells[\"eval_encl\"].value.toNumber() + cells[\"eval_OCLC-050\"].value.toNumber() + cells[\"eval_300a\"].value.toNumber()) # fixed to translate blank value in eval_encl to 0",
     "onError": "set-to-blank",
     "newColumnName": "score",
     "columnInsertIndex": 5,
