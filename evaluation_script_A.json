@@ -1,0 +1,520 @@
+[
+  {
+    "op": "core/column-removal",
+    "columnName": "007$01",
+    "description": "Remove column 007$01"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "000$17:1",
+    "expression": "value.replace(\" \",\"[b]\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column 000$17:1 using expression value.replace(\" \",\"[b]\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "050",
+    "expression": "value.replace(/^$/,\"No 050\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column 050 using expression value.replace(/^$/,\"No 050\")"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "050",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          ""
+        ],
+        "fromBlank": true,
+        "fromError": false,
+        "to": "No 050"
+      }
+    ],
+    "description": "Mass edit cells in column 050"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "300",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          ""
+        ],
+        "fromBlank": true,
+        "fromError": false,
+        "to": "No 300"
+      }
+    ],
+    "description": "Mass edit cells in column 300"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "245$a",
+    "expression": "value.toUppercase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column 245$a using expression value.toUppercase()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "245$a",
+    "expression": "grel:replace(value,/^THE\\s/,\"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column 245$a using expression grel:replace(value,/^THE\\s/,\"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "245$a",
+    "expression": "grel:replace(value,/^AN\\s/,\"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column 245$a using expression grel:replace(value,/^AN\\s/,\"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "245$a",
+    "expression": "grel:replace(value,/^A\\s/,\"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column 245$a using expression grel:replace(value,/^A\\s/,\"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "245$a",
+    "expression": "grel:replace(value,/[\\:,\\?,\\=,\\.,\\/]$/,\"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column 245$a using expression grel:replace(value,/[\\:,\\?,\\=,\\.,\\/]$/,\"\")"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "000$17:1",
+    "newColumnName": "OCLC-Enc-Lvl",
+    "description": "Rename column 000$17:1 to OCLC-Enc-Lvl"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "050",
+    "newColumnName": "OCLC-050",
+    "description": "Rename column 050 to OCLC-050"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "300",
+    "newColumnName": "OCLC-300",
+    "description": "Rename column 300 to OCLC-300"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "OCLC-Enc-Lvl",
+    "expression": "grel:value.replace(/[\\[,\\]]/,\"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "eval_encl",
+    "columnInsertIndex": 4,
+    "description": "Create column eval_encl at index 4 based on column OCLC-Enc-Lvl using expression grel:value.replace(/[\\[,\\]]/,\"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_encl",
+    "expression": "grel:value.replace(/[b,4,1]/,\"100\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_encl using expression grel:value.replace(/[b,4,1]/,\"100\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_encl",
+    "expression": "grel:value.replace(/[H-N]/,\"50\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_encl using expression grel:value.replace(/[H-N]/,\"50\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_encl",
+    "expression": "grel:value.replace(/[7]/,\"50\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_encl using expression grel:value.replace(/[7]/,\"50\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_encl",
+    "expression": "grel:value.replace(/[8]/,\"50\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_encl using expression grel:value.replace(/[8]/,\"50\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_encl",
+    "expression": "grel:value.replace(/[3]/,\"0\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_encl using expression grel:value.replace(/[3]/,\"0\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_encl",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_encl using expression value.toNumber()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "OCLC-050",
+    "expression": "grel:value.replace(/[\\[,\\]]/,\"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "eval_OCLC-050",
+    "columnInsertIndex": 6,
+    "description": "Create column eval_OCLC-050 at index 6 based on column OCLC-050 using expression grel:value.replace(/[\\[,\\]]/,\"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_OCLC-050",
+    "expression": "grel:value.replace(\"No 050\",\"0\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_OCLC-050 using expression grel:value.replace(\"No 050\",\"0\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_OCLC-050",
+    "expression": "grel:value.replace(/^[^0].+$/,\"100\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_OCLC-050 using expression grel:value.replace(/^[^0].+$/,\"100\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_OCLC-050",
+    "expression": "grel:value.replace(/[A-Z]/,\"0\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_OCLC-050 using expression grel:value.replace(/[A-Z]/,\"0\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_OCLC-050",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_OCLC-050 using expression value.toNumber()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "OCLC-300",
+    "expression": "grel:value.replace(\"pages cm\", \"0\")",
+    "onError": "set-to-blank",
+    "newColumnName": "eval_300a",
+    "columnInsertIndex": 8,
+    "description": "Create column eval_300a at index 8 based on column OCLC-300 using expression grel:value.replace(\"pages cm\", \"0\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_300a",
+    "expression": "grel:value.replace(/p.cm./,\"0\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_300a using expression grel:value.replace(/p.cm./,\"0\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_300a",
+    "expression": "grel:value.replace(\"p.\",\"0\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_300a using expression grel:value.replace(\"p.\",\"0\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_300a",
+    "expression": "grel:value.replace(\"pages\",\"0\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_300a using expression grel:value.replace(\"pages\",\"0\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_300a",
+    "expression": "grel:value.replace(\"No 300\",\"0\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_300a using expression grel:value.replace(\"No 300\",\"0\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_300a",
+    "expression": "grel:value.replace(/^[^0].+$/,\"100\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_300a using expression grel:value.replace(/^[^0].+$/,\"100\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eval_300a",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eval_300a using expression value.toNumber()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "eval_encl",
+    "expression": "grel:if(isBlank(value), 0 + cells[\"eval_OCLC-050\"].value.toNumber() + cells[\"eval_300a\"].value.toNumber(), cells[\"eval_encl\"].value.toNumber() + cells[\"eval_OCLC-050\"].value.toNumber() + cells[\"eval_300a\"].value.toNumber())",
+    "onError": "set-to-blank",
+    "newColumnName": "score",
+    "columnInsertIndex": 5,
+    "description": "Create column score at index 5 based on column eval_encl using expression grel:if(isBlank(value), 0 + cells[\"eval_OCLC-050\"].value.toNumber() + cells[\"eval_300a\"].value.toNumber(), cells[\"eval_encl\"].value.toNumber() + cells[\"eval_OCLC-050\"].value.toNumber() + cells[\"eval_300a\"].value.toNumber())"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "score",
+    "expression": "grel:value.replace(\"300\",\"GOOD\")",
+    "onError": "set-to-blank",
+    "newColumnName": "queue",
+    "columnInsertIndex": 10,
+    "description": "Create column queue at index 10 based on column score using expression grel:value.replace(\"300\",\"GOOD\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "queue",
+    "expression": "grel:value.replace(\"150\",\"COPY\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column queue using expression grel:value.replace(\"150\",\"COPY\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "queue",
+    "expression": "grel:value.replace(\"200\",\"COPY\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column queue using expression grel:value.replace(\"200\",\"COPY\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "queue",
+    "expression": "grel:value.replace(\"100\",\"ATTN\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column queue using expression grel:value.replace(\"100\",\"ATTN\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "queue",
+    "expression": "grel:value.replace(\"250\",\"OK\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column queue using expression grel:value.replace(\"250\",\"OK\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "queue",
+    "expression": "grel:value.replace(\"50\",\"ATTN\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column queue using expression grel:value.replace(\"50\",\"ATTN\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "queue",
+    "expression": "grel:value.replace(\"0\",\"ATTN\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column queue using expression grel:value.replace(\"0\",\"ATTN\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "queue",
+    "expression": "grel:value.replace(\"COPY.ATTN\",\"COPY\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column queue using expression grel:value.replace(\"COPY.ATTN\",\"COPY\")"
+  }
+]
