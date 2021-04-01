@@ -162,10 +162,10 @@
       "mode": "row-based"
     },
     "baseColumnName": "Points for preferred criteria",
-    "expression": "grel:if(cells[\"Fails mandatory criteria\"].value != \"\", \"DEAD TO US\", \nif(value > 100, \"Nice\", \"Okay\")\n)",
+    "expression": "grel:if(cells[\"040$b warning\"].value !=\"\", \"Derive new English-language record\", (if(cells[\"Fails mandatory criteria\"].value != \"\", \"DEAD TO US\", if(value > 100, \"Nice\", \"Okay\") ) ) )",
     "onError": "set-to-blank",
     "newColumnName": "Bucket",
     "columnInsertIndex": 7,
-    "description": "Create column Bucket at index 7 based on column Points for preferred criteria using expression grel:if(cells[\"Fails mandatory criteria\"].value != \"\", \"DEAD TO US\", \nif(value > 100, \"Nice\", \"Okay\")\n)"
+    "description": "Create column Bucket at index 7 based on column Points for preferred criteria using expression grel:if(cells[\"040$b warning\"].value !=\"\", \"Derive new English-language record\", (if(cells[\"Fails mandatory criteria\"].value != \"\", \"DEAD TO US\", if(value > 100, \"Nice\", \"Okay\") ) ) )"
   }
 ]
