@@ -1,17 +1,15 @@
-Field,Mandatory,Prefer,Logic,Note/Question on process,Q for Naun
-040 $b=eng,Y,,,,
-040 $erda,,Y,"If 040$e=rda, !LDR/18=a",,
-LDR/17=# or I or 8,,Y,,,
-LDR/17 !=# or I or 8,,,If 008/33 = 0 at least one 600_0 or 650_0 or 651_0 must be present at least one 600_ or 650_0 or 651_0 must be present,,
-042 $a=pcc or $a=lccopycat,,Y,,,
-050,,,"M for stacks, preferred for all, optional for HD
-Not acceptable for stacks: AN, FC, NH, NJ, PS 8001-8599, PZ, QS -QZ, W+, Z1200+","There may be problematic ones, not at all clear to me if this happens often, or if identified special cases are just standard ITS culture problem of people not being able to extrapolate from principles, and requiring every edge case to be enumerated in great detail. ","There are some standard ranges that we don't use, e.g., WID high zs--do we need to abide by these if going to HD?; also TOZ exception for classed together mono series, not sure how we could tell this as part of this process. (I don't see the point carving out an exception for high Zs for HD. Does the need to check for classed together series necessitate a manual step in the workflow? That could be a reason to try and eliminate those exceptions.)"
-090,,If no 050,"If no 050, follow 050 logic for 090",,
-245 $n/$p ,,,"Consider dead, pull for WIP assessment",,
-260/264_1 ,Y,,,"$b must match, though depending on encoding standard, text string may vary--copy catalog instructions say to check, wondering if we really want to bother comparing strings, maybe assess for accuracy in test phase? 
-",
-300 $a,Y,,,,
-300 $c,,Y,,,
-600_0 or 650_0 or 651_0,Y,,If 008/33 = 0,,
-655,,Y,"If 008/33 = 1, d, e, f, j, p",Could be used to automate addition of high level 655 for records that lack it,
-600_0,Y,,"If 008/34 = a, b, c",,
+Field,Mandatory,Prefer,Logic
+040 $b=eng,Y,,
+040 $erda,,Y,"If 040$e=rda, !LDR/18=a"
+LDR/17=# or I or 8,,Y,
+LDR/17 !=# or I or 8,,,If 008/33 = 0 at least one 600_0 or 650_0 or 651_0 must be present at least one 600_ or 650_0 or 651_0 must be present
+042 $a=pcc or $a=lccopycat,,Y,
+050,,,"M for stacks, preferred for all, optional for HD; Not acceptable for stacks: AN, FC, NH, NJ, PS 8001-8599, PZ, QS -QZ, W+, Z1200+"
+090,,If no 050,"If no 050, follow 050 logic for 090"
+245 $n/$p ,,,"Consider dead, pull for WIP assessment"
+260/264_1 ,Y, 
+300 $a,Y,,
+300 $c,,Y,
+600_0 or 650_0 or 651_0,Y,,If 008/33 = 0
+655,,Y,"If 008/33 = 1, d, e, f, j, p"
+600_0,Y,,"If 008/34 = a, b, c"
