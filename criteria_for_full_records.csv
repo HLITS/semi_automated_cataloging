@@ -7,7 +7,7 @@ LDR/17 !=# or I or 8,,,If 008/33 = 0 at least one 600_0 or 650_0 or 651_0 must b
 050,,,"M for stacks, preferred for all, optional for HD; Not acceptable for stacks: AN, FC, NH, NJ, PS 8001-8599, PZ, QS -QZ, W+, Z1200+"
 090,,If no 050,"If no 050, follow 050 logic for 090"
 245 $n/$p ,,,"Consider dead, pull for WIP assessment"
-260/264_1 ,Y, 
+260/264_1 ,Y,,
 300 $a,Y,,
 300 $c,,Y,
 600_0 or 650_0 or 651_0,Y,,If 008/33 = 0
