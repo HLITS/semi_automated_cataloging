@@ -135,12 +135,38 @@
       "facets": [],
       "mode": "row-based"
     },
+    "baseColumnName": "300$e",
+    "expression": "grel:if((value !=\"\"), \"\", \"Accompanying material\")",
+    "onError": "set-to-blank",
+    "newColumnName": "300$e warning",
+    "columnInsertIndex": 31,
+    "description": "Create column 300$e warning at index 31 based on column 300$e using expression grel:if((value !=\"\"), \"\", \"Accompanying material\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "245$n",
+    "expression": "grel:if((value != \"\").or(cells[\"245$p\"].value != \"\"), \"\", \"Numbering indicates work in parts\")",
+    "onError": "set-to-blank",
+    "newColumnName": "245$n$p warning",
+    "columnInsertIndex": 14,
+    "description": "Create column 245$n$p warning at index 14 based on column 245$n using expression grel:if((value != \"\").or(cells[\"245$p\"].value != \"\"), \"\", \"Numbering indicates work in parts\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
     "baseColumnName": "040$b warning",
-    "expression": "grel:[value, cells[\"26X warning\"].value, cells[\"000$17:1 warning\"].value, cells[\"300$a warning\"].value].join(\" ; \")",
+    "expression": "grel:[value, cells[\"245$n$p warning\"].value, cells[\"300$e warning\"].value, cells[\"26X warning\"].value, cells[\"000$17:1 warning\"].value, cells[\"300$a warning\"].value].join(\" ; \").replace(\";  ;  ;\",\";\").replace(\";  ;\",\";\")",
     "onError": "set-to-blank",
     "newColumnName": "Fails mandatory criteria",
-    "columnInsertIndex": 7,
-    "description": "Create column Fails mandatory criteria at index 7 based on column 040$b warning using expression grel:[value, cells[\"26X warning\"].value, cells[\"000$17:1 warning\"].value, cells[\"300$a warning\"].value].join(\" ; \")"
+    "columnInsertIndex": 8,
+    "description": "Create column Fails mandatory criteria at index 8 based on column 040$b warning using expression grel:[value, cells[\"245$n$p warning\"].value, cells[\"300$e warning\"].value, cells[\"26X warning\"].value, cells[\"000$17:1 warning\"].value, cells[\"300$a warning\"].value].join(\" ; \").replace(\";  ;  ;\",\";\").replace(\";  ;\",\";\")"
   },
   {
     "op": "core/column-addition",
@@ -148,24 +174,11 @@
       "facets": [],
       "mode": "row-based"
     },
-    "baseColumnName": "040/042 points",
-    "expression": "grel:[value, cells[\"040$e points\"].value, cells[\"050/090 points\"].value, calls[\"300$c points\"].value].sum()",
-    "onError": "set-to-blank",
-    "newColumnName": "Points for preferred criteria",
-    "columnInsertIndex": 6,
-    "description": "Create column Points for preferred criteria at index 6 based on column 040/042 points using expression grel:[value, cells[\"040$e points\"].value, cells[\"050/090 points\"].value, calls[\"300$c points\"].value].sum()"
-  },
-  {
-    "op": "core/column-addition",
-    "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
-    },
-    "baseColumnName": "Points for preferred criteria",
-    "expression": "grel:if(cells[\"040$b warning\"].value !=\"\", \"Derive new English-language record\", (if(cells[\"Fails mandatory criteria\"].value != \"\", \"DEAD TO US\", if(value > 100, \"Nice\", \"Okay\") ) ) )",
+    "baseColumnName": "Fails mandatory criteria",
+    "expression": "grel:if(value.contains(\"lacks\"), \"Non-loadable\", if(value.contains(\"work in parts\"), \"Evaluate for work in parts\", if(value.contains(\"accompanying material\"), \"Evaluate for work in parts\", if(value.contains(\"Language\"), \"Deriveable\", if(value.contains(\"level\"), \"Consider for less than full cataloging\", \"Loadable\")))))) #TO DO: Apply criteria for 6XX to less-than-full records",
     "onError": "set-to-blank",
     "newColumnName": "Bucket",
-    "columnInsertIndex": 7,
-    "description": "Create column Bucket at index 7 based on column Points for preferred criteria using expression grel:if(cells[\"040$b warning\"].value !=\"\", \"Derive new English-language record\", (if(cells[\"Fails mandatory criteria\"].value != \"\", \"DEAD TO US\", if(value > 100, \"Nice\", \"Okay\") ) ) )"
+    "columnInsertIndex": 9,
+    "description": "Create column Bucket at index 9 based on column Fails mandatory criteria using expression grel:if(value.contains(\"lacks\"), \"Non-loadable\", if(value.contains(\"work in parts\"), \"Evaluate for work in parts\", if(value.contains(\"accompanying material\"), \"Evaluate for work in parts\", if(value.contains(\"Language\"), \"Deriveable\", if(value.contains(\"level\"), \"Consider for less than full cataloging\", \"Loadable\")))))) #TO DO: Apply criteria for 6XX to less-than-full records"
   }
 ]
