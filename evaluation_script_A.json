@@ -255,8 +255,8 @@
     "baseColumnName": "040/042 points",
     "expression": "grel:value + cells[\"040$e points\"].value + cells[\"040$e points\"].value + cells[\"050/090 points\"].value + cells[\"300$c points\"].value + cells[\"655 points\"].value",
     "onError": "set-to-blank",
-    "newColumnName": "Point total",
+    "newColumnName": "Points for preferred criteria",
     "columnInsertIndex": 6,
-    "description": "Create column Point total at index 6 based on column 040/042 points using expression grel:value + cells[\"040$e points\"].value + cells[\"040$e points\"].value + cells[\"050/090 points\"].value + cells[\"300$c points\"].value + cells[\"655 points\"].value"
+    "description": "Create column Points for preferred criteria at index 6 based on column 040/042 points using expression grel:value + cells[\"040$e points\"].value + cells[\"040$e points\"].value + cells[\"050/090 points\"].value + cells[\"300$c points\"].value + cells[\"655 points\"].value"
   }
 ]
