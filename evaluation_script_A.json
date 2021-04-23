@@ -201,7 +201,7 @@
       "mode": "row-based"
     },
     "baseColumnName": "655",
-    "expression": "grel:if((value != null), 100, null))",
+    "expression": "grel:if((value != null), 100, 0))",
     "onError": "set-to-blank",
     "newColumnName": "655 points",
     "columnInsertIndex": 37,
