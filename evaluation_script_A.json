@@ -205,7 +205,7 @@
     "onError": "set-to-blank",
     "newColumnName": "655 points",
     "columnInsertIndex": 37,
-    "description": "Create column 655 points at index 37 based on column 655 using expression grel:if((value != null), 100, null))"
+    "description": "Create column 655 points at index 37 based on column 655 using expression grel:if((value != null), 100, 0))"
   },
   {
     "op": "core/column-addition",
@@ -240,11 +240,11 @@
       "mode": "row-based"
     },
     "baseColumnName": "Fails mandatory criteria",
-    "expression": "grel:if(value.contains(\"lacks\"), \"Non-loadable\", if(value.contains(\"work in parts\"), \"Evaluate for work in parts\", if(value.contains(\"Accompanying material\"), \"Evaluate for work in parts\", if(value.contains(\"Language\"), \"Deriveable\", if(value.contains(\"subject\"), \"Consider for less than full cataloging\", \"Loadable\")))))) #TO DO: Apply criteria for 008/33; normalize case; change blanks to nulls in previous logic",
+    "expression": "grel:if(value.contains(\"lacks\"), \"Non-loadable\", if(value.contains(\"work in parts\"), \"Evaluate for work in parts\", if(value.contains(\"Accompanying material\"), \"Evaluate for work in parts\", if(value.contains(\"Language\"), \"Deriveable\", if(value.contains(\"subject\"), if(cells[\"000$17:1\"].value.contains(\"8\"), \"Loadable\", \"Consider for less than full cataloging\"), \"Loadable\"))))) #TO DO: Apply criteria for 008/33; normalize case; change blanks to nulls in previous logic",
     "onError": "set-to-blank",
     "newColumnName": "Bucket",
     "columnInsertIndex": 9,
-    "description": "Create column Bucket at index 9 based on column Fails mandatory criteria using expression grel:if(value.contains(\"lacks\"), \"Non-loadable\", if(value.contains(\"work in parts\"), \"Evaluate for work in parts\", if(value.contains(\"Accompanying material\"), \"Evaluate for work in parts\", if(value.contains(\"Language\"), \"Deriveable\", if(value.contains(\"subject\"), \"Consider for less than full cataloging\", \"Loadable\")))))) #TO DO: Apply criteria for 008/33; normalize case; change blanks to nulls in previous logic"
+    "description": "Create column Bucket at index 9 based on column Fails mandatory criteria using expression grel:if(value.contains(\"lacks\"), \"Non-loadable\", if(value.contains(\"work in parts\"), \"Evaluate for work in parts\", if(value.contains(\"Accompanying material\"), \"Evaluate for work in parts\", if(value.contains(\"Language\"), \"Deriveable\", if(value.contains(\"subject\"), if(cells[\"000$17:1\"].value.contains(\"8\"), \"Loadable\", \"Consider for less than full cataloging\"), \"Loadable\"))))) #TO DO: Apply criteria for 008/33; normalize case; change blanks to nulls in previous logic"
   },
   {
     "op": "core/column-addition",
