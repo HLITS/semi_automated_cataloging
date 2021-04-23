@@ -1,0 +1,98 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "020$a",
+    "expression": "grel:value.split(\";\")[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "isbn1",
+    "columnInsertIndex": 4,
+    "description": "Create column isbn1 at index 4 based on column 020$a using expression grel:value.split(\";\")[0]"
+  },
+  {
+    "op": "core/row-reorder",
+    "mode": "row-based",
+    "sorting": {
+      "criteria": [
+        {
+          "valueType": "string",
+          "column": "isbn1",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": false,
+          "caseSensitive": false
+        },
+        {
+          "valueType": "string",
+          "column": "Bucket",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": true,
+          "caseSensitive": false
+        },
+        {
+          "valueType": "number",
+          "column": "Points for preferred criteria",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": true
+        },
+        {
+          "valueType": "number",
+          "column": "040/042 points",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": true
+        },
+        {
+          "valueType": "number",
+          "column": "050/090 points",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": true
+        }
+      ]
+    },
+    "description": "Reorder rows"
+  },
+  {
+    "op": "core/blank-down",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "isbn1",
+    "description": "Blank down cells in column isbn1"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "isbn1",
+          "expression": "isBlank(value)",
+          "columnName": "isbn1",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  }
+]
