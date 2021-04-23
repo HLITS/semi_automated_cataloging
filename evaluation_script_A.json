@@ -65,6 +65,32 @@
     "description": "Create column 040/042 points at index 5 based on column 040$a using expression grel:if((value == \"DLC\").or(cells[\"040$c\"].value == \"DLC\").or(cells[\"042$a\"].value == \"pcc\"), 100, 0)"
   },
   {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "050",
+    "expression": "grel:value.split(\"$a\")[1] # remove indicators",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column 050 using expression grel:value.split(\"$a\")[1] # remove indicators"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "090",
+    "expression": "grel:value.split(\"$a\")[1] # remove indicators",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column 090 using expression grel:value.split(\"$a\")[1] # remove indicators"
+  },
+  {
     "op": "core/column-addition",
     "engineConfig": {
       "facets": [],
@@ -136,11 +162,11 @@
       "mode": "row-based"
     },
     "baseColumnName": "300$e",
-    "expression": "grel:if((value !=\"\"), \"\", \"Accompanying material\")",
+    "expression": "grel:if((value == null), \"\", \"Accompanying material\")",
     "onError": "set-to-blank",
     "newColumnName": "300$e warning",
-    "columnInsertIndex": 31,
-    "description": "Create column 300$e warning at index 31 based on column 300$e using expression grel:if((value !=\"\"), \"\", \"Accompanying material\")"
+    "columnInsertIndex": 30,
+    "description": "Create column 300$e warning at index 30 based on column 300$e using expression grel:if((value == null), \"\", \"Accompanying material\")"
   },
   {
     "op": "core/column-addition",
@@ -161,12 +187,51 @@
       "facets": [],
       "mode": "row-based"
     },
+    "baseColumnName": "600",
+    "expression": "grel:if(\n(value.substring(1, 2) == \"0\").or(cells[\"650\"].value.substring(1, 2) == \"0\").or(cells[\"651\"].value.substring(1, 2) == \"0\"), \nnull, \"no LC subject headings\")",
+    "onError": "set-to-blank",
+    "newColumnName": "6XX warning",
+    "columnInsertIndex": 33,
+    "description": "Create column 6XX warning at index 33 based on column 600 using expression grel:if(\n(value.substring(1, 2) == \"0\").or(cells[\"650\"].value.substring(1, 2) == \"0\").or(cells[\"651\"].value.substring(1, 2) == \"0\"), \nnull, \"no LC subject headings\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "655",
+    "expression": "grel:if((value != null), 100, null))",
+    "onError": "set-to-blank",
+    "newColumnName": "655 points",
+    "columnInsertIndex": 37,
+    "description": "Create column 655 points at index 37 based on column 655 using expression grel:if((value != null), 100, null))"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
     "baseColumnName": "040$b warning",
-    "expression": "grel:[value, cells[\"245$n$p warning\"].value, cells[\"300$e warning\"].value, cells[\"26X warning\"].value, cells[\"000$17:1 warning\"].value, cells[\"300$a warning\"].value].join(\" ; \").replace(\";  ;  ;\",\";\").replace(\";  ;\",\";\")",
+    "expression": "grel:[value, cells[\"245$n$p warning\"].value, cells[\"300$e warning\"].value, cells[\"26X warning\"].value, cells[\"000$17:1 warning\"].value, cells[\"300$a warning\"].value, cells[\"6XX warning\"].value].join(\" ; \").replace(\"; ; ; ;\",\";\").replace(\"; ; ;\",\";\").replace(\"; ;\",\";\")",
     "onError": "set-to-blank",
     "newColumnName": "Fails mandatory criteria",
     "columnInsertIndex": 8,
-    "description": "Create column Fails mandatory criteria at index 8 based on column 040$b warning using expression grel:[value, cells[\"245$n$p warning\"].value, cells[\"300$e warning\"].value, cells[\"26X warning\"].value, cells[\"000$17:1 warning\"].value, cells[\"300$a warning\"].value].join(\" ; \").replace(\";  ;  ;\",\";\").replace(\";  ;\",\";\")"
+    "description": "Create column Fails mandatory criteria at index 8 based on column 040$b warning using expression grel:[value, cells[\"245$n$p warning\"].value, cells[\"300$e warning\"].value, cells[\"26X warning\"].value, cells[\"000$17:1 warning\"].value, cells[\"300$a warning\"].value, cells[\"6XX warning\"].value].join(\" ; \").replace(\"; ; ; ;\",\";\").replace(\"; ; ;\",\";\").replace(\"; ;\",\";\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fails mandatory criteria",
+    "expression": "grel:value.replace(\" ;  ;  ; \", \" ; \").replace(\" ;  ; \", \" ; \") # TO DO: do this some better way",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Fails mandatory criteria using expression grel:value.replace(\" ;  ;  ; \", \" ; \").replace(\" ;  ; \", \" ; \") # TO DO: do this some better way"
   },
   {
     "op": "core/column-addition",
@@ -175,10 +240,10 @@
       "mode": "row-based"
     },
     "baseColumnName": "Fails mandatory criteria",
-    "expression": "grel:if(value.contains(\"lacks\"), \"Non-loadable\", if(value.contains(\"work in parts\"), \"Evaluate for work in parts\", if(value.contains(\"accompanying material\"), \"Evaluate for work in parts\", if(value.contains(\"Language\"), \"Deriveable\", if(value.contains(\"level\"), \"Consider for less than full cataloging\", \"Loadable\")))))) #TO DO: Apply criteria for 6XX to less-than-full records",
+    "expression": "grel:if(value.contains(\"lacks\"), \"Non-loadable\", if(value.contains(\"work in parts\"), \"Evaluate for work in parts\", if(value.contains(\"Accompanying material\"), \"Evaluate for work in parts\", if(value.contains(\"Language\"), \"Deriveable\", if(value.contains(\"subject\"), \"Consider for less than full cataloging\", \"Loadable\")))))) #TO DO: Apply criteria for 008/33; normalize case; change blanks to nulls in previous logic",
     "onError": "set-to-blank",
     "newColumnName": "Bucket",
     "columnInsertIndex": 9,
-    "description": "Create column Bucket at index 9 based on column Fails mandatory criteria using expression grel:if(value.contains(\"lacks\"), \"Non-loadable\", if(value.contains(\"work in parts\"), \"Evaluate for work in parts\", if(value.contains(\"accompanying material\"), \"Evaluate for work in parts\", if(value.contains(\"Language\"), \"Deriveable\", if(value.contains(\"level\"), \"Consider for less than full cataloging\", \"Loadable\")))))) #TO DO: Apply criteria for 6XX to less-than-full records"
+    "description": "Create column Bucket at index 9 based on column Fails mandatory criteria using expression grel:if(value.contains(\"lacks\"), \"Non-loadable\", if(value.contains(\"work in parts\"), \"Evaluate for work in parts\", if(value.contains(\"Accompanying material\"), \"Evaluate for work in parts\", if(value.contains(\"Language\"), \"Deriveable\", if(value.contains(\"subject\"), \"Consider for less than full cataloging\", \"Loadable\")))))) #TO DO: Apply criteria for 008/33; normalize case; change blanks to nulls in previous logic"
   }
 ]
