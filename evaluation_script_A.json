@@ -245,5 +245,18 @@
     "newColumnName": "Bucket",
     "columnInsertIndex": 9,
     "description": "Create column Bucket at index 9 based on column Fails mandatory criteria using expression grel:if(value.contains(\"lacks\"), \"Non-loadable\", if(value.contains(\"work in parts\"), \"Evaluate for work in parts\", if(value.contains(\"Accompanying material\"), \"Evaluate for work in parts\", if(value.contains(\"Language\"), \"Deriveable\", if(value.contains(\"subject\"), \"Consider for less than full cataloging\", \"Loadable\")))))) #TO DO: Apply criteria for 008/33; normalize case; change blanks to nulls in previous logic"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "040/042 points",
+    "expression": "grel:value + cells[\"040$e points\"].value + cells[\"040$e points\"].value + cells[\"050/090 points\"].value + cells[\"300$c points\"].value + cells[\"655 points\"].value",
+    "onError": "set-to-blank",
+    "newColumnName": "Point total",
+    "columnInsertIndex": 6,
+    "description": "Create column Point total at index 6 based on column 040/042 points using expression grel:value + cells[\"040$e points\"].value + cells[\"040$e points\"].value + cells[\"050/090 points\"].value + cells[\"300$c points\"].value + cells[\"655 points\"].value"
   }
 ]
