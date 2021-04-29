@@ -253,7 +253,7 @@
       "mode": "row-based"
     },
     "baseColumnName": "040/042 points",
-    "expression": "grel:value + cells[\"040$e points\"].value + cells[\"040$e points\"].value + cells[\"050/090 points\"].value + cells[\"300$c points\"].value + cells[\"655 points\"].value",
+    "expression": "grel:value + cells[\"040$e points\"].value + cells[\"050/090 points\"].value + cells[\"300$c points\"].value + cells[\"655 points\"].value",
     "onError": "set-to-blank",
     "newColumnName": "Points for preferred criteria",
     "columnInsertIndex": 6,
