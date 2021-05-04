@@ -1,4 +1,4 @@
-#NORMAL:#true
+#NORMAL:#false
 008$06
 008$07:4
 008$15:3
