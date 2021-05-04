@@ -6,11 +6,11 @@
       "mode": "row-based"
     },
     "baseColumnName": "020$a",
-    "expression": "grel:value.split(\";\")[0]",
+    "expression": "grel:filter(value.split(\";\"),v,v.trim().length()==13)[0].trim() # extract only the 13-digit ISBN and remove any spaces",
     "onError": "set-to-blank",
-    "newColumnName": "isbn1",
+    "newColumnName": "isbn13",
     "columnInsertIndex": 4,
-    "description": "Create column isbn1 at index 4 based on column 020$a using expression grel:value.split(\";\")[0]"
+    "description": "Create column isbn13 at index 4 based on column 020$a using expression grel:filter(value.split(\";\"),v,v.trim().length()==13)[0].trim() # extract only the 13-digit ISBN and remove any spaces"
   },
   {
     "op": "core/row-reorder",
@@ -19,18 +19,10 @@
       "criteria": [
         {
           "valueType": "string",
-          "column": "isbn1",
+          "column": "isbn13",
           "blankPosition": 2,
           "errorPosition": 1,
           "reverse": false,
-          "caseSensitive": false
-        },
-        {
-          "valueType": "string",
-          "column": "Bucket",
-          "blankPosition": 2,
-          "errorPosition": 1,
-          "reverse": true,
           "caseSensitive": false
         },
         {
@@ -39,6 +31,14 @@
           "blankPosition": 2,
           "errorPosition": 1,
           "reverse": true
+        },
+        {
+          "valueType": "string",
+          "column": "Bucket",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": true,
+          "caseSensitive": false
         },
         {
           "valueType": "number",
@@ -64,8 +64,8 @@
       "facets": [],
       "mode": "row-based"
     },
-    "columnName": "isbn1",
-    "description": "Blank down cells in column isbn1"
+    "columnName": "isbn13",
+    "description": "Blank down cells in column isbn13"
   },
   {
     "op": "core/text-transform",
@@ -74,10 +74,19 @@
       "mode": "row-based"
     },
     "columnName": "Bucket",
-    "expression": "grel:if(isNull(cells[\"isbn1\"].value),value + \": \" + \"duplicate of \" + row.record.cells[\"035$a\"].value[0],value)",
+    "expression": "grel:if(isNull(cells[\"isbn13\"].value),value + \": \" + \"duplicate of \" + row.record.cells[\"035$a\"].value[0],value)",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Text transform on cells in column Bucket using expression grel:if(isNull(cells[\"isbn1\"].value),value + \": \" + \"duplicate of \" + row.record.cells[\"035$a\"].value[0],value)"
+    "description": "Text transform on cells in column Bucket using expression grel:if(isNull(cells[\"isbn13\"].value),value + \": \" + \"duplicate of \" + row.record.cells[\"035$a\"].value[0],value)"
+  },
+  {
+    "op": "core/fill-down",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "isbn13",
+    "description": "Fill down cells in column isbn13"
   }
 ]
