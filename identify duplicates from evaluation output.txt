@@ -13,6 +13,12 @@
     "description": "Create column isbn13 at index 4 based on column 020$a using expression grel:filter(value.split(\";\"),v,v.trim().length()==13).sort()[0].trim() # extract the sorted 13-digit ISBN and remove any spaces"
   },
   {
+    "op": "core/column-move",
+    "columnName": "isbn13",
+    "index": 0,
+    "description": "Move column isbn13 to position 0"
+  },
+  {
     "op": "core/row-reorder",
     "mode": "row-based",
     "sorting": {
