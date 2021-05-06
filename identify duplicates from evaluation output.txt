@@ -87,6 +87,19 @@
     "description": "Text transform on cells in column Bucket using expression grel:if(isNull(cells[\"isbn13\"].value),value + \": \" + \"duplicate of \" + row.record.cells[\"035$a\"].value[0],value)"
   },
   {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn13",
+    "expression": "grel:(row.record.rowCount - 1) + \" duplicates\"",
+    "onError": "set-to-blank",
+    "newColumnName": "Number of duplicates",
+    "columnInsertIndex": 1,
+    "description": "Create column Number of duplicates at index 1 based on column isbn13 using expression grel:(row.record.rowCount - 1) + \" duplicates\""
+  },
+  {
     "op": "core/fill-down",
     "engineConfig": {
       "facets": [],
