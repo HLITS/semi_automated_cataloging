@@ -1,18 +1,5 @@
 [
   {
-    "op": "core/column-addition",
-    "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
-    },
-    "baseColumnName": "020$a",
-    "expression": "grel:filter(value.split(\";\"),v,v.trim().length()==13).sort()[0].trim() # extract the sorted 13-digit ISBN and remove any spaces",
-    "onError": "set-to-blank",
-    "newColumnName": "isbn13",
-    "columnInsertIndex": 4,
-    "description": "Create column isbn13 at index 4 based on column 020$a using expression grel:filter(value.split(\";\"),v,v.trim().length()==13).sort()[0].trim() # extract the sorted 13-digit ISBN and remove any spaces"
-  },
-  {
     "op": "core/row-reorder",
     "mode": "row-based",
     "sorting": {
