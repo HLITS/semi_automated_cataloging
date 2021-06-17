@@ -6,11 +6,11 @@
       "mode": "row-based"
     },
     "baseColumnName": "020$a",
-    "expression": "grel:filter(value.split(\";\"),v,v.trim().length()==13).sort()[0].trim() # extract the sorted 13-digit ISBN and remove any spaces",
+    "expression": "grel:filter(value.split(\";\"),v,v.trim().length()==10).sort()[0].trim()",
     "onError": "set-to-blank",
-    "newColumnName": "isbn13",
+    "newColumnName": "isbn10",
     "columnInsertIndex": 7,
-    "description": "Create column isbn13 at index 7 based on column 020$a using expression grel:filter(value.split(\";\"),v,v.trim().length()==13).sort()[0].trim() # extract the sorted 13-digit ISBN and remove any spaces"
+    "description": "Create column isbn10 at index 7 based on column 020$a using expression grel:filter(value.split(\";\"),v,v.trim().length()==10).sort()[0].trim()"
   },
   {
     "op": "core/column-addition",
@@ -19,11 +19,11 @@
       "mode": "row-based"
     },
     "baseColumnName": "020$a",
-    "expression": "grel:filter(value.split(\";\"),v,v.trim().length()==10).sort()[0].trim() # extract the sorted 10-digit ISBN and remove any spaces",
+    "expression": "grel:value.find(/(\\d{13})/).sort()[0]",
     "onError": "set-to-blank",
-    "newColumnName": "isbn10",
+    "newColumnName": "isbn13",
     "columnInsertIndex": 7,
-    "description": "Create column isbn10 at index 7 based on column 020$a using expression grel:filter(value.split(\";\"),v,v.trim().length()==10).sort()[0].trim() # extract the sorted 10-digit ISBN and remove any spaces"
+    "description": "Create column isbn13 at index 7 based on column 020$a using expression grel:value.find(/(\\d{13})/).sort()[0]"
   },
   {
     "op": "core/column-addition",
