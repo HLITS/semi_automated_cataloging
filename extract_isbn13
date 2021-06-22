@@ -1,1 +1,0 @@
-filter(value.split(";"),v,v.trim().length()==13).sort()[0].trim() # extract the sorted 13-digit ISBN and remove any spaces
