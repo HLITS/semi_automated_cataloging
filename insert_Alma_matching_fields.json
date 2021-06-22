@@ -6,11 +6,24 @@
       "mode": "row-based"
     },
     "baseColumnName": "isbn_matching",
-    "expression": "grel:cell.cross(\"name_of_analytics_project\",\"isbn_matching\")[0].cells[\"MMS Id\"].value",
+    "expression": "grel:cell.cross(\"Analytics_RHONDA_EOD_imports_052021_updated xlsx\",\"isbn_matching\")[0].cells[\"MMS Id\"].value",
     "onError": "set-to-blank",
     "newColumnName": "001",
     "columnInsertIndex": 8,
-    "description": "Create column 001 at index 8 based on column isbn_matching using expression grel:cell.cross(\"name_of_analytics_project\",\"isbn_matching\")[0].cells[\"MMS Id\"].value"
+    "description": "Create column 001 at index 8 based on column isbn_matching using expression grel:cell.cross(\"Analytics_RHONDA_EOD_imports_052021_updated xlsx\",\"isbn_matching\")[0].cells[\"MMS Id\"].value"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "001",
+    "expression": "grel:if(isBlank(value),\"cannot load; no isbn match found\",value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column 001 using expression grel:if(isBlank(value),\"cannot load; no isbn match found\",value)"
   },
   {
     "op": "core/column-addition",
@@ -19,11 +32,24 @@
       "mode": "row-based"
     },
     "baseColumnName": "isbn_matching",
-    "expression": "grel:cell.cross(\"name_of_analytics_project\",\"isbn_matching\")[0].cells[\"PO Line Reference\"].value",
+    "expression": "grel:cell.cross(\"Analytics_RHONDA_EOD_imports_052021_updated xlsx\",\"isbn_matching\")[0].cells[\"PO Line Reference\"].value",
     "onError": "set-to-blank",
     "newColumnName": "POL_reference",
     "columnInsertIndex": 8,
-    "description": "Create column POL_reference at index 8 based on column isbn_matching using expression grel:cell.cross(\"name_of_analytics_project\",\"isbn_matching\")[0].cells[\"PO Line Reference\"].value"
+    "description": "Create column POL_reference at index 8 based on column isbn_matching using expression grel:cell.cross(\"Analytics_RHONDA_EOD_imports_052021_updated xlsx\",\"isbn_matching\")[0].cells[\"PO Line Reference\"].value"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "POL_reference",
+    "expression": "grel:if(isBlank(value),\"cannot load; no isbn match found\",value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column POL_reference using expression grel:if(isBlank(value),\"cannot load; no isbn match found\",value)"
   },
   {
     "op": "core/column-addition",
@@ -32,10 +58,23 @@
       "mode": "row-based"
     },
     "baseColumnName": "isbn_matching",
-    "expression": "grel:cell.cross(\"name_of_analytics_project\",\"isbn_matching\")[0].cells[\"Vendor Code\"].value",
+    "expression": "grel:cell.cross(\"Analytics_RHONDA_EOD_imports_052021_updated xlsx\",\"isbn_matching\")[0].cells[\"Vendor Code\"].value",
     "onError": "set-to-blank",
     "newColumnName": "vendor_code",
     "columnInsertIndex": 8,
-    "description": "Create column vendor_code at index 8 based on column isbn_matching using expression grel:cell.cross(\"name_of_analytics_project\",\"isbn_matching\")[0].cells[\"Vendor Code\"].value"
+    "description": "Create column vendor_code at index 8 based on column isbn_matching using expression grel:cell.cross(\"Analytics_RHONDA_EOD_imports_052021_updated xlsx\",\"isbn_matching\")[0].cells[\"Vendor Code\"].value"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "vendor_code",
+    "expression": "grel:if(isBlank(value),\"cannot load; no isbn match found\",value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column vendor_code using expression grel:if(isBlank(value),\"cannot load; no isbn match found\",value)"
   }
 ]
