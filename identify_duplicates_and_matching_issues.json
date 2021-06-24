@@ -1,0 +1,115 @@
+[
+  {
+    "op": "core/column-move",
+    "columnName": "isbn_matching",
+    "index": 0,
+    "description": "Move column isbn_matching to position 0"
+  },
+  {
+    "op": "core/row-reorder",
+    "mode": "row-based",
+    "sorting": {
+      "criteria": [
+        {
+          "valueType": "string",
+          "column": "isbn_matching",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": false,
+          "caseSensitive": false
+        },
+        {
+          "valueType": "number",
+          "column": "Points for preferred criteria",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": true
+        },
+        {
+          "valueType": "string",
+          "column": "Bucket",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": true,
+          "caseSensitive": false
+        },
+        {
+          "valueType": "number",
+          "column": "040/042 points",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": true
+        },
+        {
+          "valueType": "number",
+          "column": "050/090 points",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": true
+        }
+      ]
+    },
+    "description": "Reorder rows"
+  },
+  {
+    "op": "core/blank-down",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "isbn_matching",
+    "description": "Blank down cells in column isbn_matching"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn_matching",
+    "expression": "grel:if(row.record.rowCount == 1,\"no duplicates\",\"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Duplicates",
+    "columnInsertIndex": 1,
+    "description": "Create column Duplicates at index 1 based on column isbn_matching using expression grel:if(row.record.rowCount == 1,\"no duplicates\",\"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Duplicates",
+    "expression": "grel:if(and(row.record.rowCount > 1, isNonBlank(cells[\"isbn_matching\"].value)),\"preferred duplicate\", value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Duplicates using expression grel:if(and(row.record.rowCount > 1, isNonBlank(cells[\"isbn_matching\"].value)),\"preferred duplicate\", value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Duplicates",
+    "expression": "grel:if(and(row.record.rowCount > 1, isBlank(cells[\"isbn_matching\"].value)),\"non-preferred duplicate\", value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Duplicates using expression grel:if(and(row.record.rowCount > 1, isBlank(cells[\"isbn_matching\"].value)),\"non-preferred duplicate\", value)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn_matching",
+    "expression": "grel:if(isError(cells[\"001\"].value),\"no valid $a isbn in this project\",if(isBlank(cells[\"001\"].value),\"no isbn match in Analytics project\",\"match found\"))",
+    "onError": "set-to-blank",
+    "newColumnName": "Matching",
+    "columnInsertIndex": 1,
+    "description": "Create column Matching at index 1 based on column isbn_matching using expression grel:if(isError(cells[\"001\"].value),\"no valid $a isbn in this project\",if(isBlank(cells[\"001\"].value),\"no isbn match in Analytics project\",\"match found\"))"
+  }
+]
