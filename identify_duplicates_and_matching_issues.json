@@ -67,11 +67,11 @@
       "mode": "row-based"
     },
     "baseColumnName": "isbn_matching",
-    "expression": "grel:if(row.record.rowCount == 1,\"no duplicates\",\"\")",
+    "expression": "grel:if(row.record.rowCount == 1,\"has no duplicates\",\"\")",
     "onError": "set-to-blank",
     "newColumnName": "Duplicates",
     "columnInsertIndex": 1,
-    "description": "Create column Duplicates at index 1 based on column isbn_matching using expression grel:if(row.record.rowCount == 1,\"no duplicates\",\"\")"
+    "description": "Create column Duplicates at index 1 based on column isbn_matching using expression grel:if(row.record.rowCount == 1,\"has no duplicates\",\"\")"
   },
   {
     "op": "core/text-transform",
@@ -106,10 +106,10 @@
       "mode": "row-based"
     },
     "baseColumnName": "isbn_matching",
-    "expression": "grel:if(isError(cells[\"001\"].value),\"no valid $a isbn in this project\",if(isBlank(cells[\"001\"].value),\"no isbn match in Analytics project\",\"match found\"))",
+    "expression": "grel:if(isError(cells[\"001\"].value),\"no valid isbn in Tab_export project\",if(isBlank(cells[\"001\"].value),\"no matching isbn in Analytics project\",\"isbn match found\"))",
     "onError": "set-to-blank",
     "newColumnName": "Matching",
     "columnInsertIndex": 1,
-    "description": "Create column Matching at index 1 based on column isbn_matching using expression grel:if(isError(cells[\"001\"].value),\"no valid $a isbn in this project\",if(isBlank(cells[\"001\"].value),\"no isbn match in Analytics project\",\"match found\"))"
+    "description": "Create column Matching at index 1 based on column isbn_matching using expression grel:if(isError(cells[\"001\"].value),\"no valid isbn in Tab_export project\",if(isBlank(cells[\"001\"].value),\"no matching isbn in Analytics project\",\"isbn match found\"))"
   }
 ]
