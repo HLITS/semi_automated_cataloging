@@ -6,11 +6,11 @@
       "mode": "row-based"
     },
     "baseColumnName": "isbn_matching",
-    "expression": "grel:cell.cross(\"Tab_export_EOD_May_2021_udpated txt\",\"isbn_matching\")[0].cells[\"Bucket\"].value",
+    "expression": "grel:cell.cross(\"name_of_Analytics_project\",\"isbn_matching\")[0].cells[\"Bucket\"].value",
     "onError": "set-to-blank",
     "newColumnName": "Bucket",
     "columnInsertIndex": 8,
-    "description": "Create column Bucket at index 8 based on column isbn_matching using expression grel:cell.cross(\"Tab_export_EOD_May_2021_udpated txt\",\"isbn_matching\")[0].cells[\"Bucket\"].value"
+    "description": "Create column Bucket at index 8 based on column isbn_matching using expression grel:cell.cross(\"name_of_Analytics_project\"",\"isbn_matching\")[0].cells[\"Bucket\"].value"
   },
   {
     "op": "core/column-move",
