@@ -1,7 +1,7 @@
 Field,Mandatory,Prefer,Logic
 040 $b=eng,Y,,
 040 $erda,,Y,"If 040$e=rda, !LDR/18=a"
-LDR/17=# or I or 8,Y,,
+LDR/17=# or I or 8,,Y,
 LDR/17 !=# or I or 8,,,If 008/33 = 0 at least one 600_0 or 650_0 or 651_0 must be present at least one 600_ or 650_0 or 651_0 must be present
 042 $a=pcc or $a=lccopycat,,Y,
 050,,,"M for stacks, preferred for all, optional for HD; Not acceptable for stacks: AN, FC, NH, NJ, PS 8001-8599, PZ, QS -QZ, W+, Z1200+"
