@@ -9,21 +9,21 @@
     "expression": "grel:filter(value.split(\";\"),v,v.trim().length()==10).sort()[0].trim()",
     "onError": "set-to-blank",
     "newColumnName": "isbn10",
-    "columnInsertIndex": 7,
-    "description": "Create column isbn10 at index 7 based on column ISBN using expression grel:filter(value.split(\";\"),v,v.trim().length()==10).sort()[0].trim()"
+    "columnInsertIndex": 0,
+    "description": "Create column isbn10 at index 0 based on column ISBN using expression grel:filter(value.split(\";\"),v,v.trim().length()==10).sort()[0].trim()"
   },
   {
     "op": "core/column-addition",
     "engineConfig": {
       "facets": [],
-      "mode": "row-based"
+      "mode": "record-based"
     },
     "baseColumnName": "ISBN",
-    "expression": "grel:value.find(/(\\d{13})/).sort()[0]",
+    "expression": "grel:filter(value.split(\";\"),v,v.trim().length()==13).sort()[0].trim()",
     "onError": "set-to-blank",
     "newColumnName": "isbn13",
-    "columnInsertIndex": 7,
-    "description": "Create column isbn13 at index 7 based on column ISBN using expression grel:value.find(/(\\d{13})/).sort()[0]"
+    "columnInsertIndex": 0,
+    "description": "Create column isbn13 at index 0 based on column ISBN using expression grel:filter(value.split(\";\"),v,v.trim().length()==13).sort()[0].trim()"
   },
   {
     "op": "core/column-addition",
@@ -35,7 +35,7 @@
     "expression": "grel:coalesce(cells[\"isbn13\"].value,cells[\"isbn10\"].value)",
     "onError": "set-to-blank",
     "newColumnName": "isbn_matching",
-    "columnInsertIndex": 7,
-    "description": "Create column isbn_matching at index 7 based on column ISBN using expression grel:coalesce(cells[\"isbn13\"].value,cells[\"isbn10\"].value)"
+    "columnInsertIndex": 0,
+    "description": "Create column isbn_matching at index 0 based on column ISBN using expression grel:coalesce(cells[\"isbn13\"].value,cells[\"isbn10\"].value)"
   }
 ]
