@@ -1,0 +1,199 @@
+[
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "MMS Id",
+          "expression": "facetCount(value, 'value', 'MMS Id') > 1",
+          "columnName": "MMS Id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn_matching",
+    "expression": "grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"948\"].value[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "948 - oclc match",
+    "columnInsertIndex": 1,
+    "description": "Create column 948 - oclc match at index 1 based on column isbn_matching using expression grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"948\"].value[0]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn_matching",
+    "expression": "grel:[forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"600\"].value[0],v,\"600:\"+v+\"\\n\",\"\"),forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"650\"].value[0],v,\"650:\"+v+\"\\n\",\"\"),forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"651\"].value[0],v,\"651:\"+v+\"\\n\",\"\"),forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"655\"].value[0],v,\"655:\"+v+\"\\n\",\"\")].join(\"\\n\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Subjects - oclc match",
+    "columnInsertIndex": 1,
+    "description": "Create column Subjects - oclc match at index 1 based on column isbn_matching using expression grel:[forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"600\"].value[0],v,\"600:\"+v+\"\\n\",\"\"),forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"650\"].value[0],v,\"650:\"+v+\"\\n\",\"\"),forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"651\"].value[0],v,\"651:\"+v+\"\\n\",\"\"),forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"655\"].value[0],v,\"655:\"+v+\"\\n\",\"\")].join(\"\\n\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn_matching",
+    "expression": "grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"300$a\"].value[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "300$a - oclc match",
+    "columnInsertIndex": 1,
+    "description": "Create column 300$a - oclc match at index 1 based on column isbn_matching using expression grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"300$a\"].value[0]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn_matching",
+    "expression": "grel:[forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"260\"].value[0],v,\"260:\" + v,\"\"),forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"264\"].value[0],v,\"264:\"+v,\"\")].join(\"\\n\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Imprint - oclc match",
+    "columnInsertIndex": 1,
+    "description": "Create column Imprint - oclc match at index 1 based on column isbn_matching using expression grel:[forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"260\"].value[0],v,\"260:\" + v,\"\"),forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"264\"].value[0],v,\"264:\"+v,\"\")].join(\"\\n\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn_matching",
+    "expression": "grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"245$a\"].value[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "245$a - oclc match",
+    "columnInsertIndex": 1,
+    "description": "Create column 245$a - oclc match at index 1 based on column isbn_matching using expression grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"245$a\"].value[0]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn_matching",
+    "expression": "grel:[forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"050\"].value[0],v,\"050:\\n\" + v,\"\"),forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"090\"].value[0],v,\"090:\\n\"+v,\"\")].join(\"\\n\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Call numbers - oclc match",
+    "columnInsertIndex": 1,
+    "description": "Create column Call numbers - oclc match at index 1 based on column isbn_matching using expression grel:[forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"050\"].value[0],v,\"050:\\n\" + v,\"\"),forNonBlank(cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"090\"].value[0],v,\"090:\\n\"+v,\"\")].join(\"\\n\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn_matching",
+    "expression": "grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"042$a\"].value[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "042$a - oclc match",
+    "columnInsertIndex": 1,
+    "description": "Create column 042$a - oclc match at index 1 based on column isbn_matching using expression grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"042$a\"].value[0]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn_matching",
+    "expression": "grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"040$c\"].value[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "040$c - oclc match",
+    "columnInsertIndex": 1,
+    "description": "Create column 040$c - oclc match at index 1 based on column isbn_matching using expression grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"040$c\"].value[0]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn_matching",
+    "expression": "grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"040$a\"].value[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "040$a - oclc match",
+    "columnInsertIndex": 1,
+    "description": "Create column 040$a - oclc match at index 1 based on column isbn_matching using expression grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"040$a\"].value[0]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn_matching",
+    "expression": "grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"035$a\"].value[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "OCLC record number",
+    "columnInsertIndex": 1,
+    "description": "Create column OCLC record number at index 1 based on column isbn_matching using expression grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"035$a\"].value[0]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn_matching",
+    "expression": "grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"Record warnings\"].value[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "OCLC record warnings",
+    "columnInsertIndex": 1,
+    "description": "Create column OCLC record warnings at index 1 based on column isbn_matching using expression grel:cell.cross(\"RHONDA_MATCHES_PROJECT\", \"isbn_matching\").cells[\"Record warnings\"].value[0]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "isbn_matching",
+    "expression": "grel:cell.cross(\"RHONDA_MATCHES_PROJECT\",\"isbn_matching\")[0].cells[\"Record evaluation\"].value",
+    "onError": "set-to-blank",
+    "newColumnName": "OCLC record evaluation",
+    "columnInsertIndex": 1,
+    "description": "Create column OCLC record evaluation at index 1 based on column isbn_matching using expression grel:cell.cross(\"RHONDA_MATCHES_PROJECT\",\"isbn_matching\")[0].cells[\"Record evaluation\"].value"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "OCLC record evaluation",
+    "expression": "grel:if(isBlank(cells[\"isbn_matching\"].value),\"Alma record lacks isbn for matching\",if(isBlank(value),\"No matching OCLC record found\",value))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column OCLC record evaluation using expression grel:if(isBlank(cells[\"isbn_matching\"].value),\"Alma record lacks isbn for matching\",if(isBlank(value),\"No matching OCLC record found\",value))"
+  }
+]
