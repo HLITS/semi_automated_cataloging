@@ -188,11 +188,11 @@
       "mode": "row-based"
     },
     "baseColumnName": "300$a",
-    "expression": "grel:if(isBlank(value), \"lacks physical extent\", if(value.contains(\"volume\"),\"300$a indicates work in parts\",\"\"))",
+    "expression": "grel:if(isBlank(value), \"lacks physical extent\", if(value.contains(\"volumes\"),\"300$a indicates work in parts\",\"\"))",
     "onError": "set-to-blank",
     "newColumnName": "300$a warning",
     "columnInsertIndex": 35,
-    "description": "Create column 300$a warning at index 35 based on column 300$a using expression grel:if(isBlank(value), \"lacks physical extent\", if(value.contains(\"volume\"),\"300$a indicates work in parts\",\"\"))"
+    "description": "Create column 300$a warning at index 35 based on column 300$a using expression grel:if(isBlank(value), \"lacks physical extent\", if(value.contains(\"volumes\"),\"300$a indicates work in parts\",\"\"))"
   },
   {
     "op": "core/column-addition",
