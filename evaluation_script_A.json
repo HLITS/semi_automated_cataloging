@@ -9,8 +9,8 @@
     "expression": "join ([cells['040$a'].value,cells['040$c'].value,cells['040$d'].value],';')",
     "onError": "keep-original",
     "newColumnName": "OCLC_symbols",
-    "columnInsertIndex": 9,
-    "description": "Create column OCLC_symbols at index 9 based on column 040$a using expression join ([cells['040$a'].value,cells['040$c'].value,cells['040$d'].value],';')"
+    "columnInsertIndex": 0,
+    "description": "Create column OCLC_symbols at index 0 based on column 040$a using expression join ([cells['040$a'].value,cells['040$c'].value,cells['040$d'].value],';')"
   },
   {
     "op": "core/column-addition",
@@ -22,9 +22,9 @@
     "expression": "grel:if(filter(value.split(\";\"),v,not(or(v.startsWith(\"OCLC\"),inArray([\"ACCAR\",\"AUXAM\",\"BCBTC\",\"BDX\",\"BENTH\",\"BIBBD\",\"BLOOM\",\"BTCTA\",\"BWK\",\"BWX\",\"C3L\",\"CASSC\",\"CHILD\",\"CNPIT\",\"DEGRU\",\"DEUTG\",\"DON\",\"EBLCP\",\"EMGRP\",\"ERASA\",\"ERASP\",\"EVIEW\",\"FRGNR\",\"GGVRL\",\"HUPRS\",\"I5B\",\"IBEAM\",\"INARC\",\"KNOPY\",\"NARDE\",\"NFBCA\",\"NHMCR\",\"NYDIS\",\"NYGHE\",\"NYINF\",\"OCL\",\"OHX\",\"PL#\",\"PLAWI\",\"PLAYA\",\"RECBC\",\"RECBK\",\"RECBX\",\"RTH\",\"SEGPB\",\"SMPUB\",\"TDF\",\"TETON\",\"TRCLS\",\"TYFRS\",\"TZT\",\"UKAHL\",\"UKAMD\",\"UKDBK\",\"UKGRL\",\"UKHST\",\"UKKRT\",\"UKMGB\",\"UKOUP\",\"UKSKG\",\"ULVER\",\"UNEBO\",\"WKLRS\",\"YDX\",\"YDXCP\",\"YDX/YDXCP\"],v)))).length()>=1,\"\",\"vendor record not edited by library\")",
     "onError": "set-to-blank",
     "newColumnName": "OCLC symbol warning",
-    "columnInsertIndex": 10,
-    "description": "Create column OCLC symbol warning at index 10 based on column OCLC_symbols using expression grel:if(filter(value.split(\";\"),v,not(or(v.startsWith(\"OCLC\"),inArray([\"ACCAR\",\"AUXAM\",\"BCBTC\",\"BDX\",\"BENTH\",\"BIBBD\",\"BLOOM\",\"BTCTA\",\"BWK\",\"BWX\",\"C3L\",\"CASSC\",\"CHILD\",\"CNPIT\",\"DEGRU\",\"DEUTG\",\"DON\",\"EBLCP\",\"EMGRP\",\"ERASA\",\"ERASP\",\"EVIEW\",\"FRGNR\",\"GGVRL\",\"HUPRS\",\"I5B\",\"IBEAM\",\"INARC\",\"KNOPY\",\"NARDE\",\"NFBCA\",\"NHMCR\",\"NYDIS\",\"NYGHE\",\"NYINF\",\"OCL\",\"OHX\",\"PL#\",\"PLAWI\",\"PLAYA\",\"RECBC\",\"RECBK\",\"RECBX\",\"RTH\",\"SEGPB\",\"SMPUB\",\"TDF\",\"TETON\",\"TRCLS\",\"TYFRS\",\"TZT\",\"UKAHL\",\"UKAMD\",\"UKDBK\",\"UKGRL\",\"UKHST\",\"UKKRT\",\"UKMGB\",\"UKOUP\",\"UKSKG\",\"ULVER\",\"UNEBO\",\"WKLRS\",\"YDX\",\"YDXCP\",\"YDX/YDXCP\"],v)))).length()>=1,\"\",\"vendor record not edited by library\")"
-  },  
+    "columnInsertIndex": 0,
+    "description": "Create column OCLC symbol warning at index 0 based on column OCLC_symbols using expression grel:if(filter(value.split(\";\"),v,not(or(v.startsWith(\"OCLC\"),inArray([\"ACCAR\",\"AUXAM\",\"BCBTC\",\"BDX\",\"BENTH\",\"BIBBD\",\"BLOOM\",\"BTCTA\",\"BWK\",\"BWX\",\"C3L\",\"CASSC\",\"CHILD\",\"CNPIT\",\"DEGRU\",\"DEUTG\",\"DON\",\"EBLCP\",\"EMGRP\",\"ERASA\",\"ERASP\",\"EVIEW\",\"FRGNR\",\"GGVRL\",\"HUPRS\",\"I5B\",\"IBEAM\",\"INARC\",\"KNOPY\",\"NARDE\",\"NFBCA\",\"NHMCR\",\"NYDIS\",\"NYGHE\",\"NYINF\",\"OCL\",\"OHX\",\"PL#\",\"PLAWI\",\"PLAYA\",\"RECBC\",\"RECBK\",\"RECBX\",\"RTH\",\"SEGPB\",\"SMPUB\",\"TDF\",\"TETON\",\"TRCLS\",\"TYFRS\",\"TZT\",\"UKAHL\",\"UKAMD\",\"UKDBK\",\"UKGRL\",\"UKHST\",\"UKKRT\",\"UKMGB\",\"UKOUP\",\"UKSKG\",\"ULVER\",\"UNEBO\",\"WKLRS\",\"YDX\",\"YDXCP\",\"YDX/YDXCP\"],v)))).length()>=1,\"\",\"vendor record not edited by library\")"
+  },
   {
     "op": "core/column-addition",
     "engineConfig": {
@@ -35,8 +35,8 @@
     "expression": "grel:if(value==\"eng\", \"\", \"Language of cataloging is \" + value)",
     "onError": "set-to-blank",
     "newColumnName": "040$b warning",
-    "columnInsertIndex": 12,
-    "description": "Create column 040$b warning at index 12 based on column 040$b using expression grel:if(value==\"eng\", \"\", \"Language of cataloging is \" + value)"
+    "columnInsertIndex": 0,
+    "description": "Create column 040$b warning at index 0 based on column 040$b using expression grel:if(value==\"eng\", \"\", \"Language of cataloging is \" + value)"
   },
   {
     "op": "core/column-addition",
@@ -48,8 +48,21 @@
     "expression": "grel:if((value !=\"I\").and(value !=\"8\").and(value !=\"\"), \"encoding level is \" + value, \"\")",
     "onError": "set-to-blank",
     "newColumnName": "000$17:1 warning",
-    "columnInsertIndex": 23,
-    "description": "Create column 000$17:1 warning at index 23 based on column 000$17:1 using expression grel:if((value !=\"I\").and(value !=\"8\").and(value !=\"\"), \"encoding level is \" + value, \"\")"
+    "columnInsertIndex": 0,
+    "description": "Create column 000$17:1 warning at index 0 based on column 000$17:1 using expression grel:if((value !=\"I\").and(value !=\"8\").and(value !=\"\"), \"encoding level is \" + value, \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "000$06",
+    "expression": "grel:if(value!=\"a\", \"Record type is non-book\",\"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "000$06 warning",
+    "columnInsertIndex": 0,
+    "description": "Create column 000$06 warning at index 0 based on column 000$06 using expression grel:if(value!=\"a\", \"Record type is non-book\",\"\")"
   },
   {
     "op": "core/column-addition",
@@ -61,8 +74,8 @@
     "expression": "grel:if(value==\"o\", \"Form of item is online resource\",\"\")",
     "onError": "set-to-blank",
     "newColumnName": "008$23 warning",
-    "columnInsertIndex": 6,
-    "description": "Create column 008$23 warning at index 6 based on column 008$23 using expression grel:if(value==\"o\", \"Form of item is online resource\",\"\")"
+    "columnInsertIndex": 0,
+    "description": "Create column 008$23 warning at index 0 based on column 008$23 using expression grel:if(value==\"o\", \"Form of item is online resource\",\"\")"
   },
   {
     "op": "core/column-addition",
@@ -74,8 +87,8 @@
     "expression": "grel:if(and(isBlank(cells[\"260\"].value),isBlank(cells[\"264\"].value)),\"lacks imprint\",\"\")",
     "onError": "set-to-blank",
     "newColumnName": "26X warning",
-    "columnInsertIndex": 23,
-    "description": "Create column 26X warning at index 23 based on column 264 using expression grel:if(and(isBlank(cells[\"260\"].value),isBlank(cells[\"264\"].value)),\"lacks imprint\",\"\")"
+    "columnInsertIndex": 0,
+    "description": "Create column 26X warning at index 0 based on column 264 using expression grel:if(and(isBlank(cells[\"260\"].value),isBlank(cells[\"264\"].value)),\"lacks imprint\",\"\")"
   },
   {
     "op": "core/column-addition",
@@ -87,8 +100,8 @@
     "expression": "grel:if(value.contains(\"rda\"), 100, 0)",
     "onError": "set-to-blank",
     "newColumnName": "040$e points",
-    "columnInsertIndex": 17,
-    "description": "Create column 040$e points at index 17 based on column 040$e using expression grel:if(value.contains(\"rda\"), 100, 0)"
+    "columnInsertIndex": 0,
+    "description": "Create column 040$e points at index 0 based on column 040$e using expression grel:if(value.contains(\"rda\"), 100, 0)"
   },
   {
     "op": "core/column-addition",
@@ -100,8 +113,8 @@
     "expression": "grel:if(or(cells[\"OCLC_symbols\"].value.contains(\"DLC\"),cells[\"042$a\"].value == \"pcc\"), 100, 0)",
     "onError": "set-to-blank",
     "newColumnName": "040/042 points",
-    "columnInsertIndex": 19,
-    "description": "Create column 040/042 points at index 19 based on column OCLC_symbols using expression grel:if(or(cells[\"OCLC_symbols\"].value.contains(\"DLC\"),cells[\"042$a\"].value == \"pcc\"), 100, 0)"
+    "columnInsertIndex": 0,
+    "description": "Create column 040/042 points at index 0 based on column OCLC_symbols using expression grel:if(or(cells[\"OCLC_symbols\"].value.contains(\"DLC\"),cells[\"042$a\"].value == \"pcc\"), 100, 0)"
   },
   {
     "op": "core/text-transform",
@@ -110,11 +123,11 @@
       "mode": "row-based"
     },
     "columnName": "050",
-    "expression": "grel:forEach(value.split(\";\"),v,v.split(\"$a\")[1]).join(\"\\n\") # stack separate 050s and remove indicators",
+    "expression": "grel:forEach(value.split(\";\"),v,v.split(\"$a\")[1]).join(\"\\n\")",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Text transform on cells in column 050 using expression grel:forEach(value.split(\";\"),v,v.split(\"$a\")[1]).join(\"\\n\") # stack separate 050s and remove indicators"
+    "description": "Text transform on cells in column 050 using expression grel:forEach(value.split(\";\"),v,v.split(\"$a\")[1]).join(\"\\n\")"
   },
   {
     "op": "core/text-transform",
@@ -123,11 +136,11 @@
       "mode": "row-based"
     },
     "columnName": "090",
-    "expression": "grel:forEach(value.split(\";\"),v,v.split(\"$a\")[1]).join(\"\\n\") # stack separate 050s and remove indicators",
+    "expression": "grel:forEach(value.split(\";\"),v,v.split(\"$a\")[1]).join(\"\\n\")",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Text transform on cells in column 090 using expression grel:forEach(value.split(\";\"),v,v.split(\"$a\")[1]).join(\"\\n\") # stack separate 050s and remove indicators"
+    "description": "Text transform on cells in column 090 using expression grel:forEach(value.split(\";\"),v,v.split(\"$a\")[1]).join(\"\\n\")"
   },
   {
     "op": "core/column-addition",
@@ -136,11 +149,11 @@
       "mode": "row-based"
     },
     "baseColumnName": "090",
-    "expression": "grel:if(isNonBlank(cells['050'].value),cells['050'].value.split(\"\\n\")[0],if(isNonBlank(cells['090'].value),cells['090'].value.split(\"\\n\")[0],\"\")) # fill with first nonblank value, starting in 050, then in 090",
+    "expression": "grel:if(isNonBlank(cells['050'].value),cells['050'].value.split(\"\\n\")[0],if(isNonBlank(cells['090'].value),cells['090'].value.split(\"\\n\")[0],\"\"))",
     "onError": "set-to-blank",
     "newColumnName": "Call number",
-    "columnInsertIndex": 30,
-    "description": "Create column Call number at index 30 based on column 090 using expression grel:if(isNonBlank(cells['050'].value),cells['050'].value.split(\"\\n\")[0],if(isNonBlank(cells['090'].value),cells['090'].value.split(\"\\n\")[0],\"\")) # fill with first nonblank value, starting in 050, then in 090"
+    "columnInsertIndex": 0,
+    "description": "Create column Call number at index 0 based on column 090 using expression grel:if(isNonBlank(cells['050'].value),cells['050'].value.split(\"\\n\")[0],if(isNonBlank(cells['090'].value),cells['090'].value.split(\"\\n\")[0],\"\"))"
   },
   {
     "op": "core/column-addition",
@@ -152,8 +165,8 @@
     "expression": "grel:if(or(inArray([\"AN\",\"FC\",\"NH\",\"NJ\",\"PZ\",\"QS\",\"QT\",\"QZ\"],value.substring(0,2)), value.startsWith(\"W\"), value.startsWith(\"PS8\"), value.substring(0,5).contains(/Z[1-9][2-9][0-9]{2}/) ),\"Unacceptable class or call number range\",\"\")",
     "onError": "set-to-blank",
     "newColumnName": "Call number class warning",
-    "columnInsertIndex": 31,
-    "description": "Create column Call number class warning at index 31 based on column Call number using expression grel:if(or(inArray([\"AN\",\"FC\",\"NH\",\"NJ\",\"PZ\",\"QS\",\"QT\",\"QZ\"],value.substring(0,2)), value.startsWith(\"W\"), value.startsWith(\"PS8\"), value.substring(0,5).contains(/Z[1-9][2-9][0-9]{2}/) ),\"Unacceptable class or call number range\",\"\")"
+    "columnInsertIndex": 0,
+    "description": "Create column Call number class warning at index 0 based on column Call number using expression grel:if(or(inArray([\"AN\",\"FC\",\"NH\",\"NJ\",\"PZ\",\"QS\",\"QT\",\"QZ\"],value.substring(0,2)), value.startsWith(\"W\"), value.startsWith(\"PS8\"), value.substring(0,5).contains(/Z[1-9][2-9][0-9]{2}/) ),\"Unacceptable class or call number range\",\"\")"
   },
   {
     "op": "core/column-addition",
@@ -165,8 +178,8 @@
     "expression": "grel:if(or(value.toLowercase().contains(\"bd.\"), value.toLowercase().contains(\"band\"), value.toLowercase().contains(\"v.\"), value.toLowercase().contains(\"vol.\"), value.toLowercase().contains(\"pt.\"), value.toLowercase().contains(\"part\")),\"Classed-together call number\",\"\")",
     "onError": "set-to-blank",
     "newColumnName": "Call number multipart warning",
-    "columnInsertIndex": 31,
-    "description": "Create column Call number multipart warning at index 31 based on column Call number using expression grel:if(or(value.toLowercase().contains(\"bd.\"), value.toLowercase().contains(\"band\"), value.toLowercase().contains(\"v.\"), value.toLowercase().contains(\"vol.\"), value.toLowercase().contains(\"pt.\"), value.toLowercase().contains(\"part\")),\"Classed-together call number\",\"\")"
+    "columnInsertIndex": 0,
+    "description": "Create column Call number multipart warning at index 0 based on column Call number using expression grel:if(or(value.toLowercase().contains(\"bd.\"), value.toLowercase().contains(\"band\"), value.toLowercase().contains(\"v.\"), value.toLowercase().contains(\"vol.\"), value.toLowercase().contains(\"pt.\"), value.toLowercase().contains(\"part\")),\"Classed-together call number\",\"\")"
   },
   {
     "op": "core/column-addition",
@@ -178,8 +191,8 @@
     "expression": "grel:if(forNonBlank(cells[\"Call number\"].value,v,and(v.contains(\"$b\"), or(v.contains(/20\\d{2}/), v.contains(/19\\d{2}/))),false),\"\",\"no usable call number\")",
     "onError": "set-to-blank",
     "newColumnName": "Call number completeness warning",
-    "columnInsertIndex": 31,
-    "description": "Create column Call number completeness warning at index 31 based on column Call number using expression grel:if(forNonBlank(cells[\"Call number\"].value,v,and(v.contains(\"$b\"), or(v.contains(/20\\d{2}/), v.contains(/19\\d{2}/))),false),\"\",\"no usable call number\")"
+    "columnInsertIndex": 0,
+    "description": "Create column Call number completeness warning at index 0 based on column Call number using expression grel:if(forNonBlank(cells[\"Call number\"].value,v,and(v.contains(\"$b\"), or(v.contains(/20\\d{2}/), v.contains(/19\\d{2}/))),false),\"\",\"no usable call number\")"
   },
   {
     "op": "core/column-addition",
@@ -191,8 +204,8 @@
     "expression": "grel:if(isBlank(value), \"lacks physical extent\", if(value.contains(\"volumes\"),\"300$a indicates work in parts\",\"\"))",
     "onError": "set-to-blank",
     "newColumnName": "300$a warning",
-    "columnInsertIndex": 35,
-    "description": "Create column 300$a warning at index 35 based on column 300$a using expression grel:if(isBlank(value), \"lacks physical extent\", if(value.contains(\"volumes\"),\"300$a indicates work in parts\",\"\"))"
+    "columnInsertIndex": 0,
+    "description": "Create column 300$a warning at index 0 based on column 300$a using expression grel:if(isBlank(value), \"lacks physical extent\", if(value.contains(\"volumes\"),\"300$a indicates work in parts\",\"\"))"
   },
   {
     "op": "core/column-addition",
@@ -204,8 +217,8 @@
     "expression": "grel:if(isNonBlank(value), 100, 0)",
     "onError": "set-to-blank",
     "newColumnName": "300$c points",
-    "columnInsertIndex": 37,
-    "description": "Create column 300$c points at index 37 based on column 300$c using expression grel:if(isNonBlank(value), 100, 0)"
+    "columnInsertIndex": 0,
+    "description": "Create column 300$c points at index 0 based on column 300$c using expression grel:if(isNonBlank(value), 100, 0)"
   },
   {
     "op": "core/column-addition",
@@ -217,8 +230,8 @@
     "expression": "grel:if(isNonBlank(value),\"Accompanying material\", \"\")",
     "onError": "set-to-blank",
     "newColumnName": "300$e warning",
-    "columnInsertIndex": 39,
-    "description": "Create column 300$e warning at index 39 based on column 300$e using expression grel:if(isNonBlank(value),\"Accompanying material\", \"\")"
+    "columnInsertIndex": 0,
+    "description": "Create column 300$e warning at index 0 based on column 300$e using expression grel:if(isNonBlank(value),\"Accompanying material\", \"\")"
   },
   {
     "op": "core/column-addition",
@@ -230,8 +243,8 @@
     "expression": "grel:if(or(isNonBlank(cells[\"245$n\"].value), isNonBlank(cells[\"245$p\"].value)), \"Numbering indicates work in parts\", \"\")",
     "onError": "set-to-blank",
     "newColumnName": "245$n$p warning",
-    "columnInsertIndex": 23,
-    "description": "Create column 245$n$p warning at index 23 based on column 245$p using expression grel:if(or(isNonBlank(cells[\"245$n\"].value), isNonBlank(cells[\"245$p\"].value)), \"Numbering indicates work in parts\", \"\")"
+    "columnInsertIndex": 0,
+    "description": "Create column 245$n$p warning at index 0 based on column 245$p using expression grel:if(or(isNonBlank(cells[\"245$n\"].value), isNonBlank(cells[\"245$p\"].value)), \"Numbering indicates work in parts\", \"\")"
   },
   {
     "op": "core/column-addition",
@@ -243,8 +256,8 @@
     "expression": "grel:if(\nor(\nforNonBlank(cells[\"600\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false), forNonBlank(cells[\"650\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false),\nforNonBlank(cells[\"651\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false)\n),\n\"\",\"no LC subject headings\")",
     "onError": "set-to-blank",
     "newColumnName": "6xx warning",
-    "columnInsertIndex": 46,
-    "description": "Create column 6xx warning at index 46 based on column 651 using expression grel:if(\nor(\nforNonBlank(cells[\"600\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false), forNonBlank(cells[\"650\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false),\nforNonBlank(cells[\"651\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false)\n),\n\"\",\"no LC subject headings\")"
+    "columnInsertIndex": 0,
+    "description": "Create column 6xx warning at index 0 based on column 651 using expression grel:if(\nor(\nforNonBlank(cells[\"600\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false), forNonBlank(cells[\"650\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false),\nforNonBlank(cells[\"651\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false)\n),\n\"\",\"no LC subject headings\")"
   },
   {
     "op": "core/column-addition",
@@ -256,8 +269,8 @@
     "expression": "grel:if(isNonBlank(value), 100, 0)",
     "onError": "set-to-blank",
     "newColumnName": "655 points",
-    "columnInsertIndex": 48,
-    "description": "Create column 655 points at index 48 based on column 655 using expression grel:if(isNonBlank(value), 100, 0)"
+    "columnInsertIndex": 0,
+    "description": "Create column 655 points at index 0 based on column 655 using expression grel:if(isNonBlank(value), 100, 0)"
   },
   {
     "op": "core/column-addition",
@@ -265,12 +278,51 @@
       "facets": [],
       "mode": "row-based"
     },
-    "baseColumnName": "008$06",
-    "expression": "grel:filter([cells[\"008$23 warning\"].value, cells[\"OCLC symbol warning\"].value, cells[\"040$b warning\"].value, cells['245$n$p warning'].value, cells['26X warning'].value, cells[\"000$17:1 warning\"].value, cells['Call number completeness warning'].value, cells['Call number multipart warning'].value, cells['Call number class warning'].value, cells['300$a warning'].value, cells['300$e warning'].value, cells['6xx warning'].value ],v,isNonBlank(v)).join(\"\\n\")",
+    "baseColumnName": "020$a",
+    "expression": "grel:value.find(/(\\d{13})/).sort()[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "isbn13",
+    "columnInsertIndex": 0,
+    "description": "Create column isbn13 at index 0 based on column 020$a using expression grel:value.find(/(\\d{13})/).sort()[0]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "020$a",
+    "expression": "grel:filter(value.split(\";\"),v,v.trim().length()==10).sort()[0].trim()",
+    "onError": "set-to-blank",
+    "newColumnName": "isbn10",
+    "columnInsertIndex": 0,
+    "description": "Create column isbn10 at index 0 based on column 020$a using expression grel:filter(value.split(\";\"),v,v.trim().length()==10).sort()[0].trim()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "000$06",
+    "expression": "grel:cells[\"040$e points\"].value + cells[\"040/042 points\"].value + cells[\"300$c points\"].value + cells[\"655 points\"].value",
+    "onError": "set-to-blank",
+    "newColumnName": "Record sorting points",
+    "columnInsertIndex": 0,
+    "description": "Create column Record sorting points at index 0 based on column 000$06 using expression grel:cells[\"040$e points\"].value + cells[\"040/042 points\"].value + cells[\"300$c points\"].value + cells[\"655 points\"].value"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "000$06",
+    "expression": "grel:filter([cells[\"OCLC symbol warning\"].value, cells[\"040$b warning\"].value, cells[\"000$06 warning\"].value, cells[\"008$23 warning\"].value, cells['245$n$p warning'].value, cells['26X warning'].value, cells['300$a warning'].value, cells['300$e warning'].value, cells['Call number completeness warning'].value, cells['Call number multipart warning'].value, cells['Call number class warning'].value, cells['6xx warning'].value, cells[\"000$17:1 warning\"].value ],v,isNonBlank(v)).join(\"\\n\")",
     "onError": "set-to-blank",
     "newColumnName": "Record warnings",
     "columnInsertIndex": 0,
-    "description": "Create column Record warnings at index 0 based on column 008$06 using expression grel:filter([cells[\"008$23 warning\"].value, cells[\"OCLC symbol warning\"].value, cells[\"040$b warning\"].value, cells['245$n$p warning'].value, cells['26X warning'].value, cells[\"000$17:1 warning\"].value, cells['Call number completeness warning'].value, cells['Call number multipart warning'].value, cells['Call number class warning'].value, cells['300$a warning'].value, cells['300$e warning'].value, cells['6xx warning'].value ],v,isNonBlank(v)).join(\"\\n\")"
+    "description": "Create column Record warnings at index 0 based on column 000$06 using expression grel:filter([cells[\"OCLC symbol warning\"].value, cells[\"040$b warning\"].value, cells[\"000$06 warning\"].value, cells[\"008$23 warning\"].value, cells['245$n$p warning'].value, cells['26X warning'].value, cells['300$a warning'].value, cells['300$e warning'].value, cells['Call number completeness warning'].value, cells['Call number multipart warning'].value, cells['Call number class warning'].value, cells['6xx warning'].value, cells[\"000$17:1 warning\"].value ],v,isNonBlank(v)).join(\"\\n\")"
   },
   {
     "op": "core/column-addition",
@@ -279,11 +331,11 @@
       "mode": "row-based"
     },
     "baseColumnName": "Record warnings",
-    "expression": "grel:if(value.contains(\"lacks\"), \"3|Record has insufficient description\", if(value.contains(\"vendor\"), \"4|Vendor record - not touched by library\", if(or(value.contains(\"Language\"), value.contains(\"online\")),\"5|Record is for online resource or uses non-english language of cataloging\", if(or(value.contains(\"work in parts\"), value.contains(\"Accompanying material\")),\"6|Record is for multipart\", if(value.contains(\"subject\"), \"7|Record lacks subject headings\", if(value.contains(\"call number\"), \"8|Loadable - record lacks usable call number\", \"9|Loadable - record has usable call number\") ) ) ) ) ) #TO DO: find better sorting/deduping method; assess fiction without call number/subject headings and add category if desired",
+    "expression": "grel:if(value.contains(\"lacks\"), \"3|Record has insufficient description\", if(value.contains(\"vendor\"), \"4|Vendor record - not touched by library\", if(or(value.contains(\"Language\"), value.contains(\"online\")),\"5|Record is for online resource or uses non-english language of cataloging\", if(value.contains(\"non-book\"), \"6|Record type is non-book\", if(or(value.contains(\"work in parts\"), value.contains(\"Accompanying material\")),\"7|Record is for multipart\", if(value.contains(\"subject\"), \"8|Record lacks subject headings\", if(value.contains(\"call number\"), \"9|Loadable - record lacks usable call number\", \"10|Loadable - record has usable call number\") ) ) ) ) ) )",
     "onError": "set-to-blank",
     "newColumnName": "Record evaluation",
     "columnInsertIndex": 0,
-    "description": "Create column Record evaluation at index 0 based on column Record warnings using expression grel:if(value.contains(\"lacks\"), \"3|Record has insufficient description\", if(value.contains(\"vendor\"), \"4|Vendor record - not touched by library\", if(or(value.contains(\"Language\"), value.contains(\"online\")),\"5|Record is for online resource or uses non-english language of cataloging\", if(or(value.contains(\"work in parts\"), value.contains(\"Accompanying material\")),\"6|Record is for multipart\", if(value.contains(\"subject\"), \"7|Record lacks subject headings\", if(value.contains(\"call number\"), \"8|Loadable - record lacks usable call number\", \"9|Loadable - record has usable call number\") ) ) ) ) ) #TO DO: find better sorting/deduping method; assess fiction without call number/subject headings and add category if desired"
+    "description": "Create column Record evaluation at index 0 based on column Record warnings using expression grel:if(value.contains(\"lacks\"), \"3|Record has insufficient description\", if(value.contains(\"vendor\"), \"4|Vendor record - not touched by library\", if(or(value.contains(\"Language\"), value.contains(\"online\")),\"5|Record is for online resource or uses non-english language of cataloging\", if(value.contains(\"non-book\"), \"6|Record type is non-book\", if(or(value.contains(\"work in parts\"), value.contains(\"Accompanying material\")),\"7|Record is for multipart\", if(value.contains(\"subject\"), \"8|Record lacks subject headings\", if(value.contains(\"call number\"), \"9|Loadable - record lacks usable call number\", \"10|Loadable - record has usable call number\") ) ) ) ) ) )"
   },
   {
     "op": "core/column-addition",
@@ -295,8 +347,8 @@
     "expression": "grel:value.split(\"|\")[0].toNumber()",
     "onError": "set-to-blank",
     "newColumnName": "Record evaluation value",
-    "columnInsertIndex": 1,
-    "description": "Create column Record evaluation value at index 1 based on column Record evaluation using expression grel:value.split(\"|\")[0].toNumber()"
+    "columnInsertIndex": 0,
+    "description": "Create column Record evaluation value at index 0 based on column Record evaluation using expression grel:value.split(\"|\")[0].toNumber()"
   },
   {
     "op": "core/text-transform",
@@ -310,45 +362,6 @@
     "repeat": false,
     "repeatCount": 10,
     "description": "Text transform on cells in column Record evaluation using expression grel:value.split(\"|\")[1]"
-  },
-  {
-    "op": "core/column-addition",
-    "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
-    },
-    "baseColumnName": "Record warnings",
-    "expression": "grel:cells[\"040$e points\"].value + cells[\"040/042 points\"].value + cells[\"300$c points\"].value + cells[\"655 points\"].value",
-    "onError": "set-to-blank",
-    "newColumnName": "Record sorting points",
-    "columnInsertIndex": 3,
-    "description": "Create column Record sorting points at index 3 based on column Record warnings using expression grel:cells[\"040$e points\"].value + cells[\"040/042 points\"].value + cells[\"300$c points\"].value + cells[\"655 points\"].value"
-  },
-  {
-    "op": "core/column-addition",
-    "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
-    },
-    "baseColumnName": "020$a",
-    "expression": "grel:value.find(/(\\d{13})/).sort()[0]",
-    "onError": "set-to-blank",
-    "newColumnName": "isbn13",
-    "columnInsertIndex": 13,
-    "description": "Create column isbn13 at index 13 based on column 020$a using expression grel:value.find(/(\\d{13})/).sort()[0]"
-  },
-  {
-    "op": "core/column-addition",
-    "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
-    },
-    "baseColumnName": "020$a",
-    "expression": "grel:filter(value.split(\";\"),v,v.trim().length()==10).sort()[0].trim()",
-    "onError": "set-to-blank",
-    "newColumnName": "isbn10",
-    "columnInsertIndex": 13,
-    "description": "Create column isbn10 at index 13 based on column 020$a using expression grel:filter(value.split(\";\"),v,v.trim().length()==10).sort()[0].trim()"
   },
   {
     "op": "core/column-addition",
