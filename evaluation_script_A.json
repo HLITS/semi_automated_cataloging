@@ -45,11 +45,11 @@
       "mode": "row-based"
     },
     "baseColumnName": "000$17:1",
-    "expression": "grel:if((value !=\"I\").and(value !=\"8\").and(value !=\"\"), \"encoding level is \" + value, \"\")",
+    "expression": "grel:if((value !=\"I\").and(value !=\"8\").and(value !=\"\").and(value !=\" \"), \"encoding level is \" + value, \"\")",
     "onError": "set-to-blank",
     "newColumnName": "000$17:1 warning",
     "columnInsertIndex": 0,
-    "description": "Create column 000$17:1 warning at index 0 based on column 000$17:1 using expression grel:if((value !=\"I\").and(value !=\"8\").and(value !=\"\"), \"encoding level is \" + value, \"\")"
+    "description": "Create column 000$17:1 warning at index 0 based on column 000$17:1 using expression grel:if((value !=\"I\").and(value !=\"8\").and(value !=\"\").and(value !=\" \"), \"encoding level is \" + value, \"\")"
   },
   {
     "op": "core/column-addition",
