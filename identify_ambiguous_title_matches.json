@@ -1,0 +1,103 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "245$a - oclc match",
+    "expression": "grel:join ([coalesce(cells['245$a - oclc match'].value,''),coalesce(cells['245$b - oclc match'].value,'')],' ')",
+    "onError": "set-to-blank",
+    "newColumnName": "Matching title",
+    "columnInsertIndex": 0,
+    "description": "Create column Matching title at index 0 based on column 245$a - oclc match using expression grel:join ([coalesce(cells['245$a - oclc match'].value,''),coalesce(cells['245$b - oclc match'].value,'')],' ')"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Title",
+    "expression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "Candidate title",
+    "columnInsertIndex": 0,
+    "description": "Create column Candidate title at index 0 based on column Title using expression grel:value"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Matching title",
+    "expression": "grel:filter(value.fingerprint().split(\" \"),v, not(inArray([\"a\", \"and\", \"for\", \"i\", \"had\", \"in\", \"is\", \"it\", \"of\", \"on\", \"that\", \"the\", \"to\", \"was\", \"were\"],v))).join(\" \")",
+    "onError": "set-to-blank",
+    "newColumnName": "Matching title tokens",
+    "columnInsertIndex": 0,
+    "description": "Create column Matching title tokens at index 0 based on column Matching title using expression grel:filter(value.fingerprint().split(\" \"),v, not(inArray([\"a\", \"and\", \"for\", \"i\", \"had\", \"in\", \"is\", \"it\", \"of\", \"on\", \"that\", \"the\", \"to\", \"was\", \"were\"],v))).join(\" \")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Candidate title",
+    "expression": "grel:filter(value.fingerprint().split(\" \"),v, not(inArray([\"a\", \"and\", \"for\", \"i\", \"had\", \"in\", \"is\", \"it\", \"of\", \"on\", \"that\", \"the\", \"to\", \"was\", \"were\"],v))).join(\" \")",
+    "onError": "set-to-blank",
+    "newColumnName": "Candidate title tokens",
+    "columnInsertIndex": 0,
+    "description": "Create column Candidate title tokens at index 0 based on column Candidate title using expression grel:filter(value.fingerprint().split(\" \"),v, not(inArray([\"a\", \"and\", \"for\", \"i\", \"had\", \"in\", \"is\", \"it\", \"of\", \"on\", \"that\", \"the\", \"to\", \"was\", \"were\"],v))).join(\" \")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Candidate title tokens",
+    "expression": "grel:filter(cells[\"Candidate title tokens\"].value.split(\" \"), v, inArray(cells[\"Matching title tokens\"].value.split(\" \"),v)).length()",
+    "onError": "set-to-blank",
+    "newColumnName": "Title match percentage",
+    "columnInsertIndex": 0,
+    "description": "Create column Title match percentage at index 0 based on column Candidate title tokens using expression grel:filter(cells[\"Candidate title tokens\"].value.split(\" \"), v, inArray(cells[\"Matching title tokens\"].value.split(\" \"),v)).length()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Title match percentage",
+    "expression": "grel:round((value * 1.0) / cells[\"Candidate title tokens\"].value.split(\" \").length()*100)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Title match percentage using expression grel:round((value * 1.0) / cells[\"Candidate title tokens\"].value.split(\" \").length()*100)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "OCLC record evaluation",
+    "expression": "grel:if(and(value.startsWith(\"Loadable\"),cells[\"Title match percentage\"].value!=100),value + \" | REVIEW MATCH BEFORE EXPORT\",value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column OCLC record evaluation using expression grel:if(and(value.startsWith(\"Loadable\"),cells[\"Title match percentage\"].value!=100),value + \" | REVIEW MATCH BEFORE EXPORT\",value)"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Candidate title tokens",
+    "description": "Remove column Candidate title tokens"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Matching title tokens",
+    "description": "Remove column Matching title tokens"
+  }
+]
