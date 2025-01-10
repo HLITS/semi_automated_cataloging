@@ -1,0 +1,377 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "050",
+    "expression": "grel:forEach(value.split(\";\"),v,v.split(\"$a\")[1]).join(\"\\n\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column 050 using expression grel:forEach(value.split(\";\"),v,v.split(\"$a\")[1]).join(\"\\n\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "090",
+    "expression": "grel:forEach(value.split(\";\"),v,v.split(\"$a\")[1]).join(\"\\n\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column 090 using expression grel:forEach(value.split(\";\"),v,v.split(\"$a\")[1]).join(\"\\n\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "090",
+    "expression": "grel:if(isNonBlank(cells['050'].value),cells['050'].value.split(\"\\n\")[0],if(isNonBlank(cells['090'].value),cells['090'].value.split(\"\\n\")[0],\"\"))",
+    "onError": "set-to-blank",
+    "newColumnName": "Call number",
+    "columnInsertIndex": 0,
+    "description": "Create column Call number at index 0 based on column 090 using expression grel:if(isNonBlank(cells['050'].value),cells['050'].value.split(\"\\n\")[0],if(isNonBlank(cells['090'].value),cells['090'].value.split(\"\\n\")[0],\"\"))"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "040$a",
+    "expression": "join ([cells['040$a'].value,cells['040$c'].value,cells['040$d'].value],';')",
+    "onError": "keep-original",
+    "newColumnName": "OCLC_symbols",
+    "columnInsertIndex": 0,
+    "description": "Create column OCLC_symbols at index 0 based on column 040$a using expression join ([cells['040$a'].value,cells['040$c'].value,cells['040$d'].value],';')"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "baseColumnName": "OCLC_symbols",
+    "expression": "grel:if(filter(value.split(\";\"),v,not(or(v.startsWith(\"OCLC\"),inArray([\"ACCAR\",\"AUXAM\",\"BCBTC\",\"BDX\",\"BENTH\",\"BIBBD\",\"BLOOM\",\"BTCTA\",\"BWK\",\"BWX\",\"C3L\",\"CASSC\",\"CHILD\",\"CNPIT\",\"DEGRU\",\"DEUTG\",\"DON\",\"EBLCP\",\"EMGRP\",\"ERASA\",\"ERASP\",\"EVIEW\",\"FRGNR\",\"GGVRL\",\"HUPRS\",\"I5B\",\"IBEAM\",\"INARC\",\"KNOPY\",\"NARDE\",\"NFBCA\",\"NHMCR\",\"NYDIS\",\"NYGHE\",\"NYINF\",\"OCL\",\"OHX\",\"PL#\",\"PLAWI\",\"PLAYA\",\"RECBC\",\"RECBK\",\"RECBX\",\"RTH\",\"SEGPB\",\"SINLB\",\"SINUS\",\"SMPUB\",\"STF\",\"TDF\",\"TEMFT\",\"TETON\",\"TRCLS\",\"TYFRS\",\"TZT\",\"UKAHL\",\"UKAMD\",\"UKDBK\",\"UKGRL\",\"UKHST\",\"UKKRT\",\"UKM\",\"UKMGB\",\"UKOUP\",\"UKRCM\",\"UKSKG\",\"ULVER\",\"UNEBO\",\"WKLRS\",\"YDX\",\"YDXCP\",\"YDX/YDXCP\",\"ZCU\"],v)))).length()>=1,\"\",\"Vendor record not edited by library\")",
+    "onError": "set-to-blank",
+    "newColumnName": "OCLC symbol warning",
+    "columnInsertIndex": 0,
+    "description": "Create column OCLC symbol warning at index 0 based on column OCLC_symbols using expression grel:if(filter(value.split(\";\"),v,not(or(v.startsWith(\"OCLC\"),inArray([\"ACCAR\",\"AUXAM\",\"BCBTC\",\"BDX\",\"BENTH\",\"BIBBD\",\"BLOOM\",\"BTCTA\",\"BWK\",\"BWX\",\"C3L\",\"CASSC\",\"CHILD\",\"CNPIT\",\"DEGRU\",\"DEUTG\",\"DON\",\"EBLCP\",\"EMGRP\",\"ERASA\",\"ERASP\",\"EVIEW\",\"FRGNR\",\"GGVRL\",\"HUPRS\",\"I5B\",\"IBEAM\",\"INARC\",\"KNOPY\",\"NARDE\",\"NFBCA\",\"NHMCR\",\"NYDIS\",\"NYGHE\",\"NYINF\",\"OCL\",\"OHX\",\"PL#\",\"PLAWI\",\"PLAYA\",\"RECBC\",\"RECBK\",\"RECBX\",\"RTH\",\"SEGPB\",\"SINLB\",\"SINUS\",\"SMPUB\",\"STF\",\"TDF\",\"TEMFT\",\"TETON\",\"TRCLS\",\"TYFRS\",\"TZT\",\"UKAHL\",\"UKAMD\",\"UKDBK\",\"UKGRL\",\"UKHST\",\"UKKRT\",\"UKM\",\"UKMGB\",\"UKOUP\",\"UKRCM\",\"UKSKG\",\"ULVER\",\"UNEBO\",\"WKLRS\",\"YDX\",\"YDXCP\",\"YDX/YDXCP\",\"ZCU\"],v)))).length()>=1,\"\",\"Vendor record not edited by library\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "040$b",
+    "expression": "grel:if(value==\"eng\", \"\", \"Language of cataloging is \" + value)",
+    "onError": "set-to-blank",
+    "newColumnName": "040$b warning",
+    "columnInsertIndex": 0,
+    "description": "Create column 040$b warning at index 0 based on column 040$b using expression grel:if(value==\"eng\", \"\", \"Language of cataloging is \" + value)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "000$06",
+    "expression": "grel:if(value!=\"j\", \"Record type is not musical sound recording\",\"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "000$06 warning",
+    "columnInsertIndex": 0,
+    "description": "Create column 000$06 warning at index 0 based on column 000$06 using expression grel:if(value!=\"j\", \"Record type is not musical sound recording\",\"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "008$23",
+    "expression": "grel:if(value==\"o\", \"Form of item is online resource\",\"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "008$23 warning",
+    "columnInsertIndex": 0,
+    "description": "Create column 008$23 warning at index 0 based on column 008$23 using expression grel:if(value==\"o\", \"Form of item is online resource\",\"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "264",
+    "expression": "grel:if(and(isBlank(cells[\"260\"].value),isBlank(cells[\"264\"].value)),\"Lacks imprint\",\"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "26X warning",
+    "columnInsertIndex": 0,
+    "description": "Create column 26X warning at index 0 based on column 264 using expression grel:if(and(isBlank(cells[\"260\"].value),isBlank(cells[\"264\"].value)),\"Lacks imprint\",\"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "baseColumnName": "300$a",
+    "expression": "grel:if(or(isBlank(value),not(value.toLowercase().contains(\"audio\"))),\"Lacks acceptable physical extent\",\"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "300$a warning",
+    "columnInsertIndex": 0,
+    "description": "Create column 300$a warning at index 0 based on column 300$a using expression grel:if(or(isBlank(value),not(value.toLowercase().contains(\"audio\"))),\"Lacks acceptable physical extent\",\"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "300$c",
+    "expression": "grel:if(value.contains(\"4 3/4\"),\"\",\"Lacks acceptable dimensions\")",
+    "onError": "set-to-blank",
+    "newColumnName": "300$c warning",
+    "columnInsertIndex": 0,
+    "description": "Create column 300$c warning at index 0 based on column 300$c using expression grel:if(value.contains(\"4 3/4\"),\"\",\"Lacks acceptable dimensions\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "651",
+    "expression": "grel:if(\nor(\nforNonBlank(cells[\"600\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false), forNonBlank(cells[\"650\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false),\nforNonBlank(cells[\"651\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false)\n),\n\"\",\"No LC subject headings\")",
+    "onError": "set-to-blank",
+    "newColumnName": "6xx warning",
+    "columnInsertIndex": 0,
+    "description": "Create column 6xx warning at index 0 based on column 651 using expression grel:if(\nor(\nforNonBlank(cells[\"600\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false), forNonBlank(cells[\"650\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false),\nforNonBlank(cells[\"651\"].value,v,filter(v.split(\";\"),w,w.substring(1,2)==\"0\").length()>0,false)\n),\n\"\",\"No LC subject headings\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "700",
+    "expression": "grel:if(isNonBlank(cells[\"240\"].value),\"\",if(cells[\"700\"].value.contains(\"12$\"),\"\",\"No uniform title or analytical entry\"))",
+    "onError": "set-to-blank",
+    "newColumnName": "240/700:12 warning",
+    "columnInsertIndex": 0,
+    "description": "Create column 240/700:12 warning at index 0 based on column 700 using expression grel:if(isNonBlank(cells[\"240\"].value),\"\",if(cells[\"700\"].value.contains(\"12$\"),\"\",\"No uniform title or analytical entry\"))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "240/700:12 warning",
+    "expression": "grel:if ( cells[\"240\"].value.contains(\"$kSelections\"), if ( cells[\"700\"].value.contains(\"12$\"), \"\", \"No uniform title or analytical entry\" ), value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column 240/700:12 warning using expression grel:if ( cells[\"240\"].value.contains(\"$kSelections\"), if ( cells[\"700\"].value.contains(\"12$\"), \"\", \"No uniform title or analytical entry\" ), value)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "000$17:1",
+    "expression": "grel:if(or(value.contains(\" \"),value.contains(\"I\")),100,0)",
+    "onError": "set-to-blank",
+    "newColumnName": "000$17:1 points",
+    "columnInsertIndex": 0,
+    "description": "Create column 000$17:1 points at index 0 based on column 000$17:1 using expression grel:if(or(value.contains(\" \"),value.contains(\"I\")),100,0)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "040$e",
+    "expression": "grel:if(value.contains(\"rda\"), 100, 0)",
+    "onError": "set-to-blank",
+    "newColumnName": "040$e points",
+    "columnInsertIndex": 0,
+    "description": "Create column 040$e points at index 0 based on column 040$e using expression grel:if(value.contains(\"rda\"), 100, 0)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "OCLC_symbols",
+          "columnName": "OCLC_symbols",
+          "query": "",
+          "mode": "text",
+          "caseSensitive": false,
+          "invert": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "OCLC_symbols",
+    "expression": "grel:if(filter(value.split(\";\"),v,inArray([\"CPL\",\"IUL\",\"OBE\",\"BGU\",\"CIN\",\"CGU\",\"COO\",\"ENG\",\"INT\",\"RES\",\"STF\",\"UMC\",\"WTU\"],v)).length()>=1,200,0)",
+    "onError": "set-to-blank",
+    "newColumnName": "OCLC_symbols points",
+    "columnInsertIndex": 0,
+    "description": "Create column OCLC_symbols points at index 0 based on column OCLC_symbols using expression grel:if(filter(value.split(\";\"),v,inArray([\"CPL\",\"IUL\",\"OBE\",\"BGU\",\"CIN\",\"CGU\",\"COO\",\"ENG\",\"INT\",\"RES\",\"STF\",\"UMC\",\"WTU\"],v)).length()>=1,200,0)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "007$01",
+    "expression": "grel:if(value.contains(\"d\"),50,0)",
+    "onError": "set-to-blank",
+    "newColumnName": "007$01 points",
+    "columnInsertIndex": 0,
+    "description": "Create column 007$01 points at index 0 based on column 007$01 using expression grel:if(value.contains(\"d\"),50,0)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "042$a",
+    "expression": "grel:if(value.contains(\"pcc\"),100,0)",
+    "onError": "set-to-blank",
+    "newColumnName": "042$a points",
+    "columnInsertIndex": 0,
+    "description": "Create column 042$a points at index 0 based on column 042$a using expression grel:if(value.contains(\"pcc\"),100,0)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "baseColumnName": "042$a points",
+    "expression": "grel:cells[\"042$a points\"].value + cells[\"007$01 points\"].value + cells[\"OCLC_symbols points\"].value + cells[\"040$e points\"].value + cells[\"000$17:1 points\"].value",
+    "onError": "set-to-blank",
+    "newColumnName": "Record sorting points",
+    "columnInsertIndex": 0,
+    "description": "Create column Record sorting points at index 0 based on column 042$a points using expression grel:cells[\"042$a points\"].value + cells[\"007$01 points\"].value + cells[\"OCLC_symbols points\"].value + cells[\"040$e points\"].value + cells[\"000$17:1 points\"].value"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Record sorting points",
+    "expression": "grel:filter([cells[\"000$06 warning\"].value, cells[\"008$23 warning\"].value, cells[\"OCLC symbol warning\"].value, cells[\"040$b warning\"].value, cells['240/700:12 warning'].value, cells['26X warning'].value, cells['300$a warning'].value, cells['300$c warning'].value, cells['6xx warning'].value], v,isNonBlank(v)).join(\"\\n\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Record warnings",
+    "columnInsertIndex": 0,
+    "description": "Create column Record warnings at index 0 based on column Record sorting points using expression grel:filter([cells[\"000$06 warning\"].value, cells[\"008$23 warning\"].value, cells[\"OCLC symbol warning\"].value, cells[\"040$b warning\"].value, cells['240/700:12 warning'].value, cells['26X warning'].value, cells['300$a warning'].value, cells['300$c warning'].value, cells['6xx warning'].value], v,isNonBlank(v)).join(\"\\n\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "baseColumnName": "Record warnings",
+    "expression": "grel:if(value.contains(\"sound\"), \"2|Not loadable - record type is not musical sound recording\", \nif(value.contains(\"online\"), \"3|Not loadable - record is for online resource\", \nif(value.contains(\"Language\"), \"4|Not loadable - record has non-english language of cataloging\",\nif(value.contains(\"Lacks\"), \"5|Not loadable - record lacks descriptive elements\",\nif(value.contains(\"Vendor\"), \"6|Not loadable - record from unreliable cataloging source\",\nif(value.contains(\"title\"), \"7|Not loadable - record lacks u.t./analytical entry\",\nif(value.contains(\"subject\"), \"8|Not loadable - record lacks LC subject headings\",\n\"9|Loadable\")))))))",
+    "onError": "set-to-blank",
+    "newColumnName": "Record evaluation",
+    "columnInsertIndex": 0,
+    "description": "Create column Record evaluation at index 0 based on column Record warnings using expression grel:if(value.contains(\"sound\"), \"2|Not loadable - record type is not musical sound recording\", \nif(value.contains(\"online\"), \"3|Not loadable - record is for online resource\", \nif(value.contains(\"Language\"), \"4|Not loadable - record has non-english language of cataloging\",\nif(value.contains(\"Lacks\"), \"5|Not loadable - record lacks descriptive elements\",\nif(value.contains(\"Vendor\"), \"6|Not loadable - record from unreliable cataloging source\",\nif(value.contains(\"title\"), \"7|Not loadable - record lacks u.t./analytical entry\",\nif(value.contains(\"subject\"), \"8|Not loadable - record lacks LC subject headings\",\n\"9|Loadable\")))))))"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Record evaluation",
+    "expression": "grel:value.split(\"|\")[0].toNumber()",
+    "onError": "set-to-blank",
+    "newColumnName": "Record evaluation value",
+    "columnInsertIndex": 0,
+    "description": "Create column Record evaluation value at index 0 based on column Record evaluation using expression grel:value.split(\"|\")[0].toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Record evaluation",
+    "expression": "grel:value.split(\"|\")[1]",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Record evaluation using expression grel:value.split(\"|\")[1]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "024",
+    "expression": "grel:value.find(/(?<=\\$a)([A-Za-z0-9]+)/)[0]",
+    "onError": "set-to-blank",
+    "newColumnName": "UPC_matching",
+    "columnInsertIndex": 0,
+    "description": "Create column UPC_matching at index 0 based on column 024 using expression grel:value.find(/(?<=\\$a)([A-Za-z0-9]+)/)[0]"
+  },
+  {
+    "op": "core/row-reorder",
+    "mode": "row-based",
+    "sorting": {
+      "criteria": [
+        {
+          "valueType": "string",
+          "column": "UPC_matching",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": false,
+          "caseSensitive": false
+        },
+        {
+          "valueType": "number",
+          "column": "Record evaluation value",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": true
+        },
+        {
+          "valueType": "number",
+          "column": "Record sorting points",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": true
+        }
+      ]
+    },
+    "description": "Reorder rows"
+  },
+  {
+    "op": "core/blank-down",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "UPC_matching",
+    "description": "Blank down cells in column UPC_matching"
+  }
+]
