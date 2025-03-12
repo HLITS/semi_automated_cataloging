@@ -161,6 +161,19 @@
       "facets": [],
       "mode": "row-based"
     },
+    "baseColumnName": "948",
+    "expression": "grel:if(value.toLowercase().contains(\"held by hul\"),\"Already held by Harvard Library\",\"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "948 warning",
+    "columnInsertIndex": 0,
+    "description": "Create column 948 warning at index 0 based on column 948 using expression grel:if(value.toLowercase().contains(\"held by hul\"),\"Already held by Harvard Library\",\"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
     "baseColumnName": "700",
     "expression": "grel:if(isNonBlank(cells[\"240\"].value),\"\",if(cells[\"700\"].value.contains(\"12$\"),\"\",\"No uniform title or analytical entry\"))",
     "onError": "set-to-blank",
@@ -276,11 +289,11 @@
       "mode": "row-based"
     },
     "baseColumnName": "Record sorting points",
-    "expression": "grel:filter([cells[\"000$06 warning\"].value, cells[\"008$23 warning\"].value, cells[\"OCLC symbol warning\"].value, cells[\"040$b warning\"].value, cells['240/700:12 warning'].value, cells['26X warning'].value, cells['300$a warning'].value, cells['300$c warning'].value, cells['6xx warning'].value], v,isNonBlank(v)).join(\"\\n\")",
+    "expression": "grel:filter([cells[\"000$06 warning\"].value, cells[\"008$23 warning\"].value, cells[\"OCLC symbol warning\"].value, cells[\"040$b warning\"].value, cells['240/700:12 warning'].value, cells['26X warning'].value, cells['300$a warning'].value, cells['300$c warning'].value, cells['6xx warning'].value, cells['948 warning'].value], v,isNonBlank(v)).join(\"\\n\")",
     "onError": "set-to-blank",
     "newColumnName": "Record warnings",
     "columnInsertIndex": 0,
-    "description": "Create column Record warnings at index 0 based on column Record sorting points using expression grel:filter([cells[\"000$06 warning\"].value, cells[\"008$23 warning\"].value, cells[\"OCLC symbol warning\"].value, cells[\"040$b warning\"].value, cells['240/700:12 warning'].value, cells['26X warning'].value, cells['300$a warning'].value, cells['300$c warning'].value, cells['6xx warning'].value], v,isNonBlank(v)).join(\"\\n\")"
+    "description": "Create column Record warnings at index 0 based on column Record sorting points using expression grel:filter([cells[\"000$06 warning\"].value, cells[\"008$23 warning\"].value, cells[\"OCLC symbol warning\"].value, cells[\"040$b warning\"].value, cells['240/700:12 warning'].value, cells['26X warning'].value, cells['300$a warning'].value, cells['300$c warning'].value, cells['6xx warning'].value, cells['948 warning'].value], v,isNonBlank(v)).join(\"\\n\")"
   },
   {
     "op": "core/column-addition",
@@ -289,11 +302,11 @@
       "mode": "record-based"
     },
     "baseColumnName": "Record warnings",
-    "expression": "grel:if(value.contains(\"sound\"), \"2|Not loadable - record type is not musical sound recording\", \nif(value.contains(\"online\"), \"3|Not loadable - record is for online resource\", \nif(value.contains(\"Language\"), \"4|Not loadable - record has non-english language of cataloging\",\nif(value.contains(\"Lacks\"), \"5|Not loadable - record lacks descriptive elements\",\nif(value.contains(\"Vendor\"), \"6|Not loadable - record from unreliable cataloging source\",\nif(value.contains(\"title\"), \"7|Not loadable - record lacks u.t./analytical entry\",\nif(value.contains(\"subject\"), \"8|Not loadable - record lacks LC subject headings\",\n\"9|Loadable\")))))))",
+    "expression": "grel:if(value.contains(\"sound\"), \"2|Not loadable - record type is not musical sound recording\", \nif(value.contains(\"online\"), \"3|Not loadable - record is for online resource\", \nif(value.contains(\"Language\"), \"4|Not loadable - record has non-english language of cataloging\",\nif(value.contains(\"Lacks\"), \"5|Not loadable - record lacks descriptive elements\",\nif(value.contains(\"Vendor\"), \"6|Not loadable - record from unreliable cataloging source\",\nif(value.contains(\"title\"), \"7|Not loadable - record lacks u.t./analytical entry\",\nif(value.contains(\"subject\"), \"8|Not loadable - record lacks LC subject headings\",\nif(value.contains(\"Already\"), \"9|Loadable - already held by Harvard Library\",\n\"10|Loadable\"))))))))",
     "onError": "set-to-blank",
     "newColumnName": "Record evaluation",
     "columnInsertIndex": 0,
-    "description": "Create column Record evaluation at index 0 based on column Record warnings using expression grel:if(value.contains(\"sound\"), \"2|Not loadable - record type is not musical sound recording\", \nif(value.contains(\"online\"), \"3|Not loadable - record is for online resource\", \nif(value.contains(\"Language\"), \"4|Not loadable - record has non-english language of cataloging\",\nif(value.contains(\"Lacks\"), \"5|Not loadable - record lacks descriptive elements\",\nif(value.contains(\"Vendor\"), \"6|Not loadable - record from unreliable cataloging source\",\nif(value.contains(\"title\"), \"7|Not loadable - record lacks u.t./analytical entry\",\nif(value.contains(\"subject\"), \"8|Not loadable - record lacks LC subject headings\",\n\"9|Loadable\")))))))"
+    "description": "Create column Record evaluation at index 0 based on column Record warnings using expression grel:if(value.contains(\"sound\"), \"2|Not loadable - record type is not musical sound recording\", \nif(value.contains(\"online\"), \"3|Not loadable - record is for online resource\", \nif(value.contains(\"Language\"), \"4|Not loadable - record has non-english language of cataloging\",\nif(value.contains(\"Lacks\"), \"5|Not loadable - record lacks descriptive elements\",\nif(value.contains(\"Vendor\"), \"6|Not loadable - record from unreliable cataloging source\",\nif(value.contains(\"title\"), \"7|Not loadable - record lacks u.t./analytical entry\",\nif(value.contains(\"subject\"), \"8|Not loadable - record lacks LC subject headings\",\nif(value.contains(\"Already\"), \"9|Loadable - already held by Harvard Library\",\n\"10|Loadable\"))))))))"
   },
   {
     "op": "core/column-addition",
